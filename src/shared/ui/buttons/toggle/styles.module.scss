@@ -1,0 +1,12 @@
+.button {
+  padding: .15625rem;
+  border-radius: 555rem;
+  width: 2.8125rem;
+  background: var(--transparent-color-5);
+}
+
+.circle {
+  @include circle(1.25rem);
+
+  background: var(--additional-color-5);
+}

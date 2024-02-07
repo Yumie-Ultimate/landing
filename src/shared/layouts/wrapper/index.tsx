@@ -1,6 +1,10 @@
-import React, { ReactNode } from 'react'
+'use client'
+
+import React, { ReactNode, useEffect } from 'react'
 
 import styles from './styles.module.scss'
+
+import { useThemeStore } from '@/features/theme-toggle/model'
 
 import Header from '@/shared/ui/header'
 import Main from '@/shared/ui/main'
@@ -11,6 +15,20 @@ interface Props {
 }
 
 const Wrapper = ({ children }: Props) => {
+    const { theme, setTheme } = useThemeStore()
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme')
+
+        if (savedTheme) {
+            setTheme(savedTheme)
+        }
+    }, [])
+
+    useEffect(() => {
+        document.body.setAttribute('data-theme', theme)
+    }, [theme])
+
     return (
         <div className={styles.wrapper}>
             <Header />

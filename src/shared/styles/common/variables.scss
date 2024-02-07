@@ -3,6 +3,8 @@
 
   --primary-color-5: #252525;
   --additional-color-5: #FFFFFF;
+
+  --transparent-color-5: rgba(16, 16, 16, 0.3);
 }
 
 [data-theme='dark'] {
@@ -10,6 +12,8 @@
 
   --primary-color-5: #F0F0F0;
   --additional-color-5: #101010;
+
+  --transparent-color-5: rgba(240, 240, 240, 0.05);
 }
 
 :root {

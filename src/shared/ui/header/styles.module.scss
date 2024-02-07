@@ -1,0 +1,9 @@
+.header {
+  width: 100%;
+}
+
+.content {
+  @include flexibility(space-between, center);
+
+  width: 100%;
+}
