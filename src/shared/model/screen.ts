@@ -16,20 +16,16 @@ interface IState {
 }
 
 const getCurrentScreenSize = () => {
-    if (typeof window !== 'undefined') {
-        const width = document.body.clientWidth
+    const width = document.body.clientWidth
 
-        console.log(width)
+    console.log(width)
 
-        if (width < ScreenSize.SM) return ScreenSize.XS
-        if (width < ScreenSize.MD) return ScreenSize.SM
-        if (width < ScreenSize.LG) return ScreenSize.MD
-        if (width < ScreenSize.XL) return ScreenSize.LG
+    if (width < ScreenSize.SM) return ScreenSize.XS
+    if (width < ScreenSize.MD) return ScreenSize.SM
+    if (width < ScreenSize.LG) return ScreenSize.MD
+    if (width < ScreenSize.XL) return ScreenSize.LG
 
-        return ScreenSize.XL
-    }
-
-    return ScreenSize.XS
+    return ScreenSize.XL
 }
 
 export const useScreenSizeStore = create<IState>((set) => ({

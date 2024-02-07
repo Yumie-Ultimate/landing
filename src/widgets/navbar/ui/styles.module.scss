@@ -5,8 +5,6 @@
 .link {
   @include text-5;
 
-  transition: var(--transition);
-
   &:hover {
     color: var(--accent-color-5);
   }

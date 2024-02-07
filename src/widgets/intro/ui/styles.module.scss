@@ -1,0 +1,15 @@
+.intro {
+  @include flexibility(center, center, column);
+
+  gap: 3.5rem;
+  padding-block: 5rem;
+}
+
+.image {
+  width: 95%;
+  height: auto;
+}
+
+.subheading {
+  @include text-10;
+}
