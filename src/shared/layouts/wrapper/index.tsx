@@ -4,6 +4,8 @@ import React, { ReactNode, useEffect } from 'react'
 
 import styles from './styles.module.scss'
 
+import { useScreenSize, useScreenSizeStore } from '@/shared/model/screen'
+
 import { useThemeStore } from '@/features/theme-toggle/model'
 
 import Header from '@/shared/ui/header'
@@ -16,6 +18,13 @@ interface Props {
 
 const Wrapper = ({ children }: Props) => {
     const { theme } = useThemeStore()
+    const { screenSize } = useScreenSizeStore()
+
+    useScreenSize()
+
+    useEffect(() => {
+        console.log(screenSize)
+    }, [screenSize])
 
     useEffect(() => {
         document.body.setAttribute('data-theme', theme)
