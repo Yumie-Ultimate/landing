@@ -1,0 +1,19 @@
+// Body
+
+@mixin text-5 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.0rem;
+  line-height: 140%;
+  letter-spacing: -.025rem;
+
+  font-variation-settings: 'wdth' 100 'wght' 400;
+}
+
+@mixin text-10 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.875rem;
+  line-height: 140%;
+  letter-spacing: -.025rem;
+
+  font-variation-settings: 'wdth' 125 'wght' 600 'opsz' 6;
+}

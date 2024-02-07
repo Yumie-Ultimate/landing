@@ -1,0 +1,22 @@
+[data-theme='light'] {
+  --accent-color-5: var(--identify-color-20);
+
+  --primary-color-5: #252525;
+  --additional-color-5: #FFFFFF;
+}
+
+[data-theme='dark'] {
+  --accent-color-5: var(--identify-color-5);
+
+  --primary-color-5: #F0F0F0;
+  --additional-color-5: #101010;
+}
+
+:root {
+  --identify-color-5: #05FF70;
+  --identify-color-10: #AFFFFC;
+  --identify-color-20: #FF0055;
+  --identify-color-25: #5505FF;
+
+  --transition: 200ms all ease-in-out;
+}
