@@ -15,18 +15,11 @@ interface Props {
 }
 
 const Wrapper = ({ children }: Props) => {
-    const { theme, setTheme } = useThemeStore()
-
-    useEffect(() => {
-        const savedTheme = localStorage.getItem('theme')
-
-        if (savedTheme) {
-            setTheme(savedTheme)
-        }
-    }, [])
+    const { theme } = useThemeStore()
 
     useEffect(() => {
         document.body.setAttribute('data-theme', theme)
+        localStorage.setItem('theme', theme)
     }, [theme])
 
     return (

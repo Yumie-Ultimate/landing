@@ -3,6 +3,12 @@
   border-radius: 555rem;
   width: 2.8125rem;
   background: var(--transparent-color-5);
+
+  &.on {
+    & .circle {
+      background: var(--accent-color-5);
+    }
+  }
 }
 
 .circle {

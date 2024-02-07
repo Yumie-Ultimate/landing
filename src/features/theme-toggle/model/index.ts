@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 
 interface IState {
-    theme: string
-    setTheme: (theme: string) => void
+    theme: Theme
+    setTheme: (theme: Theme) => void
 }
 
 export enum Theme {
@@ -10,7 +10,12 @@ export enum Theme {
     Dark = 'dark'
 }
 
+const getInitialTheme = (): Theme => {
+    const savedTheme = localStorage.getItem('theme')
+    return Object.values(Theme).includes(savedTheme as Theme) ? (savedTheme as Theme) : Theme.Light
+}
+
 export const useThemeStore = create<IState>((set) => ({
-    theme: Theme.Light,
-    setTheme: (theme: string) => set({ theme })
+    theme: getInitialTheme(),
+    setTheme: (theme: Theme) => set({ theme })
 }))

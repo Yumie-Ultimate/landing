@@ -11,7 +11,7 @@ const ThemeToggle = () => {
         setTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)
     }
 
-    return <ToggleButton onClick={() => handleClick()} />
+    return <ToggleButton isOn={theme === Theme.Dark} onClick={() => handleClick()} />
 }
 
 export default ThemeToggle
