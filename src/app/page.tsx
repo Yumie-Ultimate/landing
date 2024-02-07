@@ -1,5 +1,9 @@
 import Image from 'next/image'
 
-export default function Home() {
-    return <div>Home</div>
+import Wrapper from '@/shared/layouts/wrapper'
+
+const Home = () => {
+    return <Wrapper>Home</Wrapper>
 }
+
+export default Home
