@@ -1,9 +1,17 @@
 .header {
   width: 100%;
+  padding-block: 1.25rem;
+  background: var(--transparent-color-10);
 }
 
 .content {
   @include flexibility(space-between, center);
 
   width: 100%;
+}
+
+.part {
+  @include row(12.5rem);
+
+  align-items: center;
 }

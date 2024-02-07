@@ -13,13 +13,18 @@ import Container from '@/shared/layouts/container'
 import Logo from '@/features/logo/ui'
 import ThemeToggle from '@/features/theme-toggle/ui'
 
+import Navbar from '@/widgets/navbar/ui'
+
 const Header = () => {
     return (
         <header className={styles.header}>
             <Container>
                 <div className={styles.content}>
                     <Logo />
-                    <ThemeToggle />
+                    <div className={styles.part}>
+                        <Navbar />
+                        <ThemeToggle />
+                    </div>
                 </div>
             </Container>
         </header>
