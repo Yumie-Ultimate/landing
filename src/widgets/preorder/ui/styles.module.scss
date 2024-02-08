@@ -28,14 +28,23 @@
   }
 }
 
+
+
 .label {
   @include text-75;
+}
+
+.content {
+  @include flexibility(center, flex-end, column);
+
+  gap: 6.25rem;
+  width: min(100%, 40rem);
 }
 
 .form {
   @include column(5rem);
 
-  width: min(100%, 40rem);
+  width: 100%;
 }
 
 .item {

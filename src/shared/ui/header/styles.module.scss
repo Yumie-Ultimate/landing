@@ -4,7 +4,7 @@
   backdrop-filter: blur(.5rem);
   background: var(--transparent-color-10);
   top: 0;
-  position: sticky;
+  position: fixed;
   z-index: 5;
 }
 
