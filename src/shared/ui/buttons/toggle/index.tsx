@@ -21,7 +21,11 @@ const ToggleButton = ({ isOn, onClick }: Props) => {
     }
 
     return (
-        <button className={cn(styles.button, { [styles.on]: isOn })} onClick={onClick}>
+        <button
+            className={cn(styles.button, { [styles.on]: isOn })}
+            onClick={onClick}
+            name='toggle'
+        >
             <motion.div
                 className={styles.circle}
                 animate={isOn ? 'slideRight' : 'slideLeft'}

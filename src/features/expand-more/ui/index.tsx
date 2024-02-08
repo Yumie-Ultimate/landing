@@ -16,7 +16,7 @@ const ExpandMore = () => {
     }
 
     return (
-        <button className={styles.button} onClick={() => handleClick()}>
+        <button className={styles.button} onClick={() => handleClick()} name='expand-more'>
             <Image
                 src={`/images/vector/${theme}/expand-more.svg`}
                 alt='Expand more'

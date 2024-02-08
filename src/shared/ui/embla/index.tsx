@@ -9,7 +9,7 @@ import cn from 'classnames'
 import styles from './styles.module.scss'
 
 interface Props {
-    variant: 'standard' | 'flash'
+    variant?: 'standard' | 'flash'
     children: ReactNode
 }
 

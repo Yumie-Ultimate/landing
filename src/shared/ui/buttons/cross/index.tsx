@@ -14,7 +14,7 @@ const CrossButton = ({ className, onClick }: Props) => {
     const { theme } = useThemeStore()
 
     return (
-        <button className={cn(className, styles.button)} onClick={onClick}>
+        <button className={cn(className, styles.button)} onClick={onClick} name='cross'>
             <Image
                 src={`/images/vector/${theme}/cross.svg`}
                 alt='Yumie'

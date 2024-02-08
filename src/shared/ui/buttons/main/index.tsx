@@ -10,7 +10,11 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const MainButton = ({ variant = 'standard', children }: Props) => {
-    return <button className={cn(styles.button, styles[variant])}>{children}</button>
+    return (
+        <button className={cn(styles.button, styles[variant])} name='main'>
+            {children}
+        </button>
+    )
 }
 
 export default MainButton
