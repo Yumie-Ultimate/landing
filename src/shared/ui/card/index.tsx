@@ -10,8 +10,8 @@ interface Props {
 const Card = ({ title, text }: Props) => {
     return (
         <div className={styles.card}>
-            <h3>{title}</h3>
-            <p>{text}</p>
+            <h3 className={styles.title}>{title}</h3>
+            <p className={styles.text}>{text}</p>
         </div>
     )
 }

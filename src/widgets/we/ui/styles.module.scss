@@ -1,0 +1,12 @@
+.we > div {
+  @include flexibility(center, center);
+}
+
+.cards {
+  @include flexibility(center, flex-start);
+
+  gap: .5rem;
+  width: 100%;
+  height: 24.125rem;
+  padding-inline: 9.375rem;
+}

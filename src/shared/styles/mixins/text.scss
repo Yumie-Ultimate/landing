@@ -47,11 +47,19 @@
 
 @mixin text-20 {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.625rem;
+  font-size: 1.05rem;
   font-stretch: 110%;
   font-weight: 400;
   line-height: 140%;
   letter-spacing: -.025rem;
+
+  @media (min-width: 1200px) {
+    font-size: 1.25rem;
+  }
+
+  @media (min-width: 1600px) {
+    font-size: 1.625rem;
+  }
 }
 
 // Headings

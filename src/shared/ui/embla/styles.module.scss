@@ -1,9 +1,9 @@
 .embla {
+  width: 100dvw;
   overflow: hidden;
 }
 
 .viewport {
-  width: 100%;
   overflow: hidden;
 }
 
@@ -13,5 +13,5 @@
 
 .slide {
   position: relative;
-  flex: 0 0 100%;
+  margin-right: .5rem;
 }

@@ -8,6 +8,7 @@ import { ScreenSize, useScreenSizeStore } from '@/shared/model/screen'
 
 import Embla from '@/shared/ui/embla'
 import Card from '@/shared/ui/card'
+import Container from '@/shared/layouts/container'
 
 const We = () => {
     const data = [
@@ -31,13 +32,21 @@ const We = () => {
 
     return (
         <section className={styles.we}>
-            {[XS].includes(screenSize) && (
-                <Embla>
-                    {data.map((item) => (
-                        <Card {...item} />
-                    ))}
-                </Embla>
-            )}
+            <Container>
+                {[XS].includes(screenSize) ? (
+                    <Embla>
+                        {data.map((item) => (
+                            <Card {...item} />
+                        ))}
+                    </Embla>
+                ) : (
+                    <div className={styles.cards}>
+                        {data.map((item) => (
+                            <Card {...item} />
+                        ))}
+                    </div>
+                )}
+            </Container>
         </section>
     )
 }
