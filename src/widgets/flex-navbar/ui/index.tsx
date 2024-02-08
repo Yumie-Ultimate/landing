@@ -1,23 +1,49 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Link from 'next/link'
 
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
 
 import styles from './styles.module.scss'
 
 import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
+import { ScreenSize, useScreenSizeStore } from '@/shared/model/screen'
 
-const variants = {
-    hidden: { opacity: 0, x: 0, y: -100 },
-    visible: { opacity: 1, x: 0, y: 0 },
-    aside: { opacity: 1, x: 0, y: 0 }
-}
+import NavbarClosingButton from '@/features/navbar-closing-button/ui'
 
 const FlexNavbar = () => {
+    const { XS } = ScreenSize
+
     const { isFlexNavbarHidden, setIsFlexNavbarHidden } = useFlexNavbarStore()
+    const { screenSize } = useScreenSizeStore()
+
+    const controls = useAnimation()
+
+    const variants = {
+        hidden: {
+            x: [XS].includes(screenSize) ? 0 : '100%',
+            y: [XS].includes(screenSize) ? '-100%' : 0,
+            transition: { type: 'spring', stiffness: 100, damping: 20 }
+        },
+        visible: {
+            x: 0,
+            y: 0,
+            transition: { type: 'spring', stiffness: 100, damping: 20 }
+        },
+        aside: {
+            x: '100%',
+            y: 0,
+            transition: { type: 'spring', stiffness: 100, damping: 20 }
+        }
+    }
+
+    useEffect(() => {
+        controls.start(
+            isFlexNavbarHidden ? 'hidden' : [XS].includes(screenSize) ? 'visible' : 'aside'
+        )
+    }, [isFlexNavbarHidden, controls])
 
     return (
         <motion.nav
@@ -49,6 +75,7 @@ const FlexNavbar = () => {
                     </Link>
                 </li>
             </ul>
+            <NavbarClosingButton />
         </motion.nav>
     )
 }
