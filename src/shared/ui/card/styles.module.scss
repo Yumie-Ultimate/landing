@@ -3,10 +3,11 @@
 
   gap: .5rem;
   padding: 1.25rem;
-  background: var(--transparent-color-25);
+  background: var(--primary-color-5);
   color: var(--additional-color-5);
   border-radius: 1.25rem;
   width: 17.5rem;
+  user-select: none;
 
   @media (min-width: 576px) {
     width: 25rem;

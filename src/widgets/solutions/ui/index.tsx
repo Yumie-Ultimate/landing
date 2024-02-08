@@ -88,7 +88,7 @@ const Solutions = () => {
     ]
 
     return (
-        <div className={styles.solutions}>
+        <div id='solutions' className={styles.solutions}>
             <Container>
                 <Mark index={0} name='Решения' />
                 <div className={styles.divisions}>
@@ -96,7 +96,7 @@ const Solutions = () => {
                         <h2 className={cn(styles.heading, styles.large)}>Поиск</h2>
                         <div className={styles['search-description']}>
                             <p className={styles.description}>
-                                Просто используйте удобную систему тегов, чтобы <br /> находить
+                                Просто используйте удобную систему тегов, <br /> чтобы находить
                                 интересных вам людей
                             </p>
                             <div className={styles.tags}>
@@ -117,6 +117,24 @@ const Solutions = () => {
                             {points.map((point) => {
                                 return <Point>{point}</Point>
                             })}
+                        </div>
+                    </div>
+                    <div className={styles.communication}>
+                        <h2 className={cn(styles.heading, styles.medium)}>Общение</h2>
+                        <div className={styles.block}>
+                            <p className={styles['meta-description']}>
+                                В личных сообщениях, общих чатах и тематических группах
+                            </p>
+                            <ol className={styles.list}>
+                                <li className={styles.item}>Личная беседа только для двоих</li>
+                                <li className={styles.item}>
+                                    Общий чат с <span className={styles.accent}>большим</span>{' '}
+                                    количеством участников, вас могут пригласить туда
+                                </li>
+                                <li className={styles.item}>
+                                    Связанные с различными тегами, посмотрите, если интересно
+                                </li>
+                            </ol>
                         </div>
                     </div>
                 </div>

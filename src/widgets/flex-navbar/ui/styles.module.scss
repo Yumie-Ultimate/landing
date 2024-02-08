@@ -23,8 +23,6 @@
 
 .list {
   @include column(1rem);
-
-  list-style: none;
 }
 
 .item {

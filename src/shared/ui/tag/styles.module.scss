@@ -4,6 +4,7 @@
   width: fit-content;
   padding: .3125rem .625rem;
   border-radius: 555rem;
+  user-select: none;
 
   &.standard {
     background: var(--primary-color-5);

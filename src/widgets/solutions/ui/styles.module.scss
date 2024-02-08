@@ -11,7 +11,11 @@
 .divisions {
   @include flexibility(flex-start, flex-start, column);
 
-  gap: 1.25rem;
+  gap: 5rem;
+
+  @media (min-width: 992px) {
+    gap: 10rem;
+  }
 }
 
 .search {
@@ -30,10 +34,27 @@
   @include column(1.5rem);
 }
 
-.points {
-  @include row(1.5rem);
+.meta-description {
+  @include text-35;
+}
 
-  flex-wrap: wrap;
+.accent {
+  color: var(--accent-color-5);
+}
+
+.points {
+  @include row(1.25rem);
+
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+    overflow: auto;
+  }
+
+  @media (min-width: 992px) {
+    gap: 3.125rem;
+  }
 }
 
 .search-description {
@@ -52,5 +73,44 @@
   @include row(.625rem);
 
   flex-wrap: wrap;
-  width: 300px;
+  width: min(100%, 30.5rem);
+}
+
+.communication {
+  @include column(2.5rem);
+
+  @media (min-width: 992px) {
+    gap: 3.125rem;
+  }
+}
+
+.medium {
+  @media (min-width: 1200px) {
+    font-size: 6.25rem;
+  }
+}
+
+.block {
+  @include column(2.25rem);
+
+  @media (min-width: 576px) {
+    padding-left: 1.5rem;
+    gap: 4.25rem;
+  }
+
+  @media (min-width: 992px) {
+    gap: 6.25rem;
+    padding-left: 3.125rem;
+  }
+}
+
+.list {
+  @include column(.625rem);
+
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
+.item {
+  @include text-20;
 }
