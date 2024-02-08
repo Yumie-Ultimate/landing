@@ -2,7 +2,8 @@
   @include flexibility(space-between, flex-start, column);
 
   height: 100dvh;
-  background-color: var(--primary-color-5);
+  background-color: var(--transparent-color-20);
+  backdrop-filter: blur(1.5rem);
   padding: 2.5rem;
   position: fixed;
   z-index: 10;
