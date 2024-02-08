@@ -2,6 +2,8 @@
 
 import React, { ReactNode, useEffect } from 'react'
 
+import Image from 'next/image'
+
 import styles from './styles.module.scss'
 
 import { useScreenSize, useScreenSizeStore } from '@/shared/model/screen'

@@ -5,7 +5,8 @@
   --additional-color-5: #FFFFFF;
 
   --transparent-color-5: rgba(16, 16, 16, 0.3);
-  --transparent-color-10: rgba(0, 0, 0, 0.05)
+  --transparent-color-10: rgba(0, 0, 0, 0.05);
+  --transparent-color-15: rgba(255, 0, 85, 0.4);
 }
 
 [data-theme='dark'] {
@@ -15,7 +16,8 @@
   --additional-color-5: #101010;
 
   --transparent-color-5: rgba(240, 240, 240, 0.05);
-  --transparent-color-10: rgba(255, 255, 255, 0.05)
+  --transparent-color-10: rgba(255, 255, 255, 0.05);
+  --transparent-color-15: rgba(5, 255, 112, 0.4);
 }
 
 :root {

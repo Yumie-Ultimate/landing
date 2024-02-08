@@ -3,6 +3,7 @@
 
   gap: 3.5rem;
   padding-block: 5rem;
+  position: relative;
 }
 
 .image {
@@ -12,4 +13,19 @@
 
 .subheading {
   @include text-10;
+}
+
+.absolute-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -5;
+}
+
+.absolute-background-1 {
+  transform: translate(20%, -40%);
+}
+
+.absolute-background-2 {
+  transform: translate(-40%, -10%);
 }

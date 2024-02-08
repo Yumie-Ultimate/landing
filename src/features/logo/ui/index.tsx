@@ -12,7 +12,14 @@ const Logo = () => {
 
     return (
         <Link className={styles.logo} href='/'>
-            <Image src={`/images/vector/${theme}/logo.svg`} alt='Yumie' width={200} height={200} />
+            <Image
+                src={`/images/vector/${theme}/logo.svg`}
+                alt='Yumie'
+                width={200}
+                height={200}
+                draggable={false}
+                loading='eager'
+            />
         </Link>
     )
 }
