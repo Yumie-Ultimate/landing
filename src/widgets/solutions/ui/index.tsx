@@ -100,8 +100,9 @@ const Solutions = () => {
                                 интересных вам людей
                             </p>
                             <div className={styles.tags}>
-                                {tags.map((tag) => (
+                                {tags.map((tag, index) => (
                                     <Tag
+                                        key={index}
                                         name={tag.name}
                                         variant={tag.variant as 'standard' | 'accent'}
                                     />
@@ -114,8 +115,8 @@ const Solutions = () => {
                             Но вы можете использовать и привычные параметры
                         </p>
                         <div className={styles.points}>
-                            {points.map((point) => {
-                                return <Point>{point}</Point>
+                            {points.map((point, index) => {
+                                return <Point key={index}>{point}</Point>
                             })}
                         </div>
                     </div>

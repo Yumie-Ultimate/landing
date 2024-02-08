@@ -6,14 +6,20 @@ import useEmblaCarousel from 'embla-carousel-react'
 
 import styles from './styles.module.scss'
 
-useEmblaCarousel.globalOptions = { loop: false }
+import { ScreenSize, useScreenSizeStore } from '@/shared/model/screen'
 
 interface Props {
     children: ReactNode
 }
 
 const Embla = ({ children }: Props) => {
+    const { XL } = ScreenSize
+
+    const { screenSize } = useScreenSizeStore()
+
     const [emblaRef] = useEmblaCarousel({ align: 'center' })
+
+    useEmblaCarousel.globalOptions = { loop: [XL].includes(screenSize) }
 
     return (
         <div className={styles.embla}>

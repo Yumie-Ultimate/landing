@@ -1,0 +1,33 @@
+.interface {
+  @include flexibility(center, center, column);
+
+  gap: 10rem;
+  padding-block: 10rem;
+  position: relative;
+}
+
+.image {
+  margin: 0 auto;
+  width: 20rem;
+  height: auto;
+  border-radius: 3.0rem;
+  background: #FFFFFF;
+
+  [data-theme='light'] & {
+    box-shadow: 0 0 1.05rem .5rem var(--transparent-color-45);
+  }
+
+  [data-theme='dark'] & {
+    box-shadow: 0 0 30px 5px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.heading {
+  @include text-40;
+}
+
+.content {
+  @include flexibility(center, center, column);
+
+  gap: 10rem;
+}

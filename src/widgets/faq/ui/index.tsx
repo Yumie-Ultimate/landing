@@ -58,7 +58,7 @@ const Faq = () => {
                     />
                     <div className={styles.cards}>
                         {data.map((item, index) => (
-                            <FaqCard {...item} gradient={gradients[index]} />
+                            <FaqCard key={index} {...item} gradient={gradients[index]} />
                         ))}
                     </div>
                 </div>
