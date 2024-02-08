@@ -6,21 +6,21 @@ import useEmblaCarousel from 'embla-carousel-react'
 
 import styles from './styles.module.scss'
 
-useEmblaCarousel.globalOptions = { loop: true }
+useEmblaCarousel.globalOptions = { loop: false }
 
 interface Props {
     children: ReactNode
 }
 
 const Embla = ({ children }: Props) => {
-    const [emblaRef] = useEmblaCarousel()
+    const [emblaRef] = useEmblaCarousel({ align: 'center' })
 
     return (
         <div className={styles.embla}>
             <div className={styles.viewport} ref={emblaRef}>
                 <div className={styles.container}>
                     {React.Children.map(children, (child, index) => (
-                        <div className={styles.slide} key={index}>
+                        <div key={index} className={styles.slide}>
                             {child}
                         </div>
                     ))}

@@ -1,0 +1,14 @@
+.mark {
+  @include flexibility(center, baseline);
+
+  gap: 1.25rem;
+}
+
+.line {
+  width: 100%;
+}
+
+.index,
+.name {
+  color: var(--transparent-color-30);
+}

@@ -19,7 +19,7 @@
 
 @mixin text-10 {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   font-stretch: 125%;
   line-height: 140%;
@@ -51,7 +51,7 @@
 
 @mixin text-20 {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.05rem;
+  font-size: .985rem;
   font-stretch: 110%;
   font-weight: 400;
   line-height: 140%;
@@ -70,9 +70,35 @@
 
 @mixin text-25 {
   font-family: 'SF Pro Text', sans-serif;
-  font-size: 9.375rem;
+  font-size: 5rem;
   line-height: 100%;
   letter-spacing: -.025rem;
+
+  @media (min-width: 1200px) {
+    font-size: 9.375rem;
+  }
+}
+
+@mixin text-60 {
+  font-family: 'SF Pro Text', sans-serif;
+  font-size: 5rem;
+  line-height: 100%;
+  letter-spacing: -.025rem;
+
+  @media (min-width: 1200px) {
+    font-size: 7.5rem;
+  }
+}
+
+@mixin text-65 {
+  font-family: 'SF Pro Text', sans-serif;
+  font-size: 5rem;
+  line-height: 100%;
+  letter-spacing: -.025rem;
+
+  @media (min-width: 1200px) {
+    font-size: 6.25rem;
+  }
 }
 
 // Section text
@@ -151,3 +177,13 @@
     font-size: 1.875rem;
   }
 }
+
+@mixin text-55 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: .875rem;
+  font-weight: 500;
+  font-stretch: 100%;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+

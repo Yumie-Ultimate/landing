@@ -27,6 +27,11 @@ button {
   font-family: 'Roboto', sans-serif;
 }
 
+hr {
+  height: .065rem;
+  background: var(--transparent-color-35);
+}
+
 input {
   border: none;
   outline: none;

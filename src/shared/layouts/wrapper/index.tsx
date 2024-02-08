@@ -4,16 +4,17 @@ import React, { ReactNode, useEffect } from 'react'
 
 import styles from './styles.module.scss'
 
+import { useScrollPrevention } from '@/shared/utils/scroll'
+
 import { useScreenSize, useScreenSizeStore } from '@/shared/model/screen'
 
-import { useScrollPrevention } from '@/shared/utils/scroll'
+import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
 
 import { useThemeStore } from '@/features/theme-toggle/model'
 
 import Header from '@/shared/ui/header'
 import Main from '@/shared/ui/main'
 import Footer from '@/shared/ui/footer'
-import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
 
 interface Props {
     children: ReactNode
@@ -25,6 +26,7 @@ const Wrapper = ({ children }: Props) => {
     const { isFlexNavbarHidden } = useFlexNavbarStore()
 
     useScreenSize()
+    useScrollPrevention({ isFlexNavbarHidden })
 
     useEffect(() => {
         console.log(screenSize)

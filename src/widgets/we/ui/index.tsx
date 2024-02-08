@@ -32,21 +32,22 @@ const We = () => {
 
     return (
         <section id='we' className={styles.we}>
-            {[XS].includes(screenSize) ? (
+            <div className={styles['embla-wrapper']}>
                 <Embla>
-                    {data.map((item) => (
-                        <Card {...item} />
+                    {data.map((item, index) => (
+                        <Card key={index} {...item} />
                     ))}
                 </Embla>
-            ) : (
+            </div>
+            <div className={styles['container-wrapper']}>
                 <Container>
                     <div className={styles.cards}>
-                        {data.map((item) => (
-                            <Card {...item} />
+                        {data.map((item, index) => (
+                            <Card key={index} {...item} />
                         ))}
                     </div>
                 </Container>
-            )}
+            </div>
         </section>
     )
 }

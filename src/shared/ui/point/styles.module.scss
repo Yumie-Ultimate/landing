@@ -1,0 +1,8 @@
+.point {
+  @include text-35;
+
+  padding: .3125rem 1.875rem;
+  border-radius: 555rem;
+  border: .0625rem solid var(--primary-color-5);
+  width: fit-content;
+}

@@ -1,0 +1,56 @@
+.solutions {
+  & > div {
+    @include column(5rem);
+
+    @media (min-width: 992px) {
+      gap: 10rem;
+    }
+  }
+}
+
+.divisions {
+  @include flexibility(flex-start, flex-start, column);
+
+  gap: 1.25rem;
+}
+
+.search {
+  @include flexibility(flex-end, flex-start, column);
+
+  gap: 2.5rem;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+}
+
+.search-meta {
+  @include column(1.5rem);
+}
+
+.points {
+  @include row(1.5rem);
+
+  flex-wrap: wrap;
+}
+
+.search-description {
+  @include column(1.25rem);
+}
+
+.description {
+  @include text-20;
+}
+
+.heading {
+  @include text-25;
+}
+
+.tags {
+  @include row(.625rem);
+
+  flex-wrap: wrap;
+  width: 300px;
+}
