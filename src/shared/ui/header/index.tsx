@@ -12,6 +12,7 @@ import Container from '@/shared/layouts/container'
 
 import Logo from '@/features/logo/ui'
 import ThemeToggle from '@/features/theme-toggle/ui'
+import ExpandMore from '@/features/expand-more/ui'
 
 import Navbar from '@/widgets/navbar/ui'
 
@@ -26,8 +27,11 @@ const Header = () => {
                 <div className={styles.content}>
                     <Logo />
                     <div className={styles.part}>
-                        {[XL].includes(screenSize) && <Navbar />}
-                        <ThemeToggle />
+                        <Navbar />
+                        <div className={styles.buttons}>
+                            <ThemeToggle />
+                            <ExpandMore />
+                        </div>
                     </div>
                 </div>
             </Container>

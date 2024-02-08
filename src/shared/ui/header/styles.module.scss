@@ -1,13 +1,23 @@
 .header {
   width: 100%;
-  padding-block: 1.25rem;
+  padding-block: .75rem;
+  backdrop-filter: blur(.5rem);
   background: var(--transparent-color-10);
+  top: 0;
+  position: sticky;
+  z-index: 5;
 }
 
 .content {
   @include flexibility(space-between, center);
 
   width: 100%;
+}
+
+.buttons {
+  @include flexibility(center, center);
+
+  gap: 1.5rem;
 }
 
 .part {

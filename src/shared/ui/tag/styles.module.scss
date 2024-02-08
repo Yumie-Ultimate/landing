@@ -1,0 +1,18 @@
+.tag {
+  @include text-55;
+
+  width: fit-content;
+  padding: .3125rem .625rem;
+  border-radius: 555rem;
+  user-select: none;
+
+  &.standard {
+    background: var(--primary-color-5);
+    color: var(--additional-color-5);
+  }
+
+  &.accent {
+    background: var(--accent-color-20);
+    color: var(--primary-color-5);
+  }
+}

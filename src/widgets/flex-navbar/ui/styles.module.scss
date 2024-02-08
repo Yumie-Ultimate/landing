@@ -1,0 +1,42 @@
+.navbar {
+  @include flexibility(space-between, flex-start, column);
+
+  height: 100dvh;
+  background-color: var(--transparent-color-20);
+  backdrop-filter: blur(1.5rem);
+  padding: 2.5rem;
+  position: fixed;
+  z-index: 10;
+
+  @media (max-width: 576px) {
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  @media (min-width: 576px) {
+    top: 0;
+    right: 0;
+    width: 500px;
+  }
+}
+
+.list {
+  @include column(1rem);
+}
+
+.item {
+  margin: 0.5rem 0;
+}
+
+.link {
+  @include text-5;
+
+  color: var(--additional-color-5);
+  text-decoration: none;
+  display: block;
+
+  &:hover {
+    color: var(--accent-color-15);
+  }
+}

@@ -1,0 +1,25 @@
+.button {
+  @include text-50;
+
+  padding: .3125rem 1.25rem;
+  border-radius: 555rem;
+  color: var(--additional-color-5);
+
+  &.standard {
+    background: var(--primary-color-5);
+
+    &:hover {
+      background: none;
+      outline: .05rem solid var(--primary-color-5);
+      color: var(--primary-color-5);
+    }
+  }
+
+  &.accent {
+    background: var(--accent-color-5);
+
+    &:hover {
+      background: var(--accent-color-10);
+    }
+  }
+}

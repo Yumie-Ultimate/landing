@@ -1,0 +1,33 @@
+.we {
+  overflow: hidden;
+}
+
+.cards {
+  @include flexibility(center, flex-start);
+
+  gap: .5rem;
+  width: 100%;
+  height: 20rem;
+
+  @media (min-width: 1200px) {
+    height: 24.125rem;
+  }
+
+  @media (min-width: 1700px) {
+    padding-inline: 9.375rem;
+  }
+}
+
+.embla-wrapper {
+  @media (min-width: 992px) {
+    display: none;
+  }
+}
+
+.container-wrapper {
+  display: none;
+
+  @media (min-width: 992px) {
+    display: block;
+  }
+}

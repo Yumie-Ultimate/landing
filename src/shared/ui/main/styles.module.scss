@@ -1,3 +1,9 @@
 .main {
+  @include column(7.5rem);
+
   flex: 1;
+
+  @media (min-width: 1200px) {
+    gap: 12.5rem;
+  }
 }

@@ -4,7 +4,11 @@ import React, { ReactNode, useEffect } from 'react'
 
 import styles from './styles.module.scss'
 
+import { useScrollPrevention } from '@/shared/utils/scroll'
+
 import { useScreenSize, useScreenSizeStore } from '@/shared/model/screen'
+
+import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
 
 import { useThemeStore } from '@/features/theme-toggle/model'
 
@@ -19,8 +23,10 @@ interface Props {
 const Wrapper = ({ children }: Props) => {
     const { theme } = useThemeStore()
     const { screenSize } = useScreenSizeStore()
+    const { isFlexNavbarHidden } = useFlexNavbarStore()
 
     useScreenSize()
+    useScrollPrevention({ isFlexNavbarHidden })
 
     useEffect(() => {
         console.log(screenSize)

@@ -1,8 +1,19 @@
 .intro {
   @include flexibility(center, center, column);
 
-  gap: 3.5rem;
-  padding-block: 5rem;
+  gap: 5rem;
+  padding-block: 8.5rem;
+  position: relative;
+
+  @media (min-width: 768px) {
+    gap: 3.5rem 12.5rem;
+  }
+
+  & > div {
+    @include flexibility(center, center, column);
+
+    gap: 2.5rem;
+  }
 }
 
 .image {
@@ -10,6 +21,38 @@
   height: auto;
 }
 
+.block {
+  @include column(3.125rem);
+
+  align-items: center;
+}
+
 .subheading {
   @include text-10;
+
+  text-align: center;
+}
+
+.buttons {
+  @include flexibility(space-between, center, column);
+
+  gap: 1.25rem;
+
+  @media (min-width: 576px) {
+    flex-direction: row;
+  }
+}
+
+.absolute-background {
+  position: absolute;
+  top: 0;
+  z-index: -5;
+}
+
+.absolute-background-1 {
+  transform: translate(20%, -40%);
+}
+
+.absolute-background-2 {
+  transform: translate(-40%, -10%);
 }
