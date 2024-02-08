@@ -31,9 +31,7 @@ textarea {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, .5);
-
-  border-radius: .5rem;
+  background-color: #FFFFFF;
 
   transition: background-color 500ms;
 
@@ -43,9 +41,7 @@ textarea {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, .10);
-
-  border-radius: .5rem;
+  background-color: #000000;
 }
 
 body {

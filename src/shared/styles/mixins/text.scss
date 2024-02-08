@@ -15,11 +15,17 @@
 
 @mixin text-10 {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   font-weight: 600;
   font-stretch: 125%;
   line-height: 140%;
   letter-spacing: -.025rem;
+
+  font-variation-settings: 'opsz' 6;
+
+  @media (min-width: 576px) {
+    font-size: 1.875rem;
+  }
 }
 
 // Card heading
@@ -91,11 +97,15 @@
 
 @mixin text-45 {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   font-weight: 600;
   font-stretch: 100%;
   line-height: 140%;
   letter-spacing: 0;
+
+  @media (min-width: 576px) {
+    font-size: 1.875rem;
+  }
 }
 
 // Footer card
@@ -107,4 +117,21 @@
   font-stretch: 100%;
   line-height: 140%;
   letter-spacing: 0;
+}
+
+// Button
+
+@mixin text-50 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-stretch: 120%;
+  line-height: 150%;
+  letter-spacing: -.05rem;
+
+  font-variation-settings: 'opsz' 10;
+
+  @media (min-width: 576px) {
+    font-size: 1.875rem;
+  }
 }

@@ -1,5 +1,6 @@
 [data-theme='light'] {
   --accent-color-5: var(--identify-color-20);
+  --accent-color-10: var(--identify-color-25);
 
   --primary-color-5: #252525;
   --additional-color-5: #FFFFFF;
@@ -11,11 +12,12 @@
 
 [data-theme='dark'] {
   --accent-color-5: var(--identify-color-5);
+  --accent-color-10: var(--identify-color-10);
 
   --primary-color-5: #F0F0F0;
   --additional-color-5: #101010;
 
-  --transparent-color-5: rgba(240, 240, 240, 0.05);
+  --transparent-color-5: rgba(240, 240, 240, 0.25);
   --transparent-color-10: rgba(255, 255, 255, 0.05);
   --transparent-color-15: rgba(5, 255, 112, 0.4);
 }

@@ -1,3 +1,7 @@
 .logo img {
-  @include square(5rem);
+  @include square(3.5rem);
+
+  @media (min-width: 576px) {
+    @include square(5rem);
+  }
 }
