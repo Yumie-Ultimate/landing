@@ -14,6 +14,12 @@
   --transparent-color-25: rgba(25, 25, 25, 0.6);
   --transparent-color-30: rgba(16, 16, 16, 0.4);
   --transparent-color-35: rgba(16, 16, 16, 0.3);
+  --transparent-color-40: rgba(16, 16, 16, 0.3);
+
+  --linear-gradient-5: linear-gradient(to bottom, #AFFFFC90 0%, #05FF7050 100%);
+  --linear-gradient-10: linear-gradient(to bottom, #FF005550 0%, #AFFFFC80 100%);
+  --linear-gradient-15: linear-gradient(to bottom, #5505FF50 0%, #FF005530 100%);
+  --linear-gradient-20: linear-gradient(to bottom, #05FF7070 0%, #5505FF30 100%);
 }
 
 [data-theme='dark'] {
@@ -32,6 +38,12 @@
   --transparent-color-25: rgba(255, 255, 255, 0.6);
   --transparent-color-30: rgba(255, 255, 255, 0.6);
   --transparent-color-35: rgba(255, 255, 255, 0.5);
+  --transparent-color-40: rgba(240, 240, 240, 0.0);
+
+  --linear-gradient-5: linear-gradient(to bottom, #AFFFFC 0%, #05FF70 100%);
+  --linear-gradient-10: linear-gradient(to bottom, #FF0055 0%, #AFFFFC 100%);
+  --linear-gradient-15: linear-gradient(to bottom, #5505FF 0%, #FF0055 100%);
+  --linear-gradient-20: linear-gradient(to bottom, #05FF70 0%, #5505FF 100%);
 }
 
 :root {

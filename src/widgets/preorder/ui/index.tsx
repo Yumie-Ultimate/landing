@@ -50,7 +50,7 @@ const Preorder = () => {
                         </label>
                         <textarea
                             className={styles.textarea}
-                            maxLength={140}
+                            maxLength={200}
                             value={message}
                             name='message'
                             onChange={(event) => setMessage(event.target.value)}

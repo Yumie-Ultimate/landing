@@ -24,8 +24,8 @@ const FlexNavbar = () => {
 
     const variants = {
         hidden: {
-            x: [XS].includes(screenSize) ? 0 : '100%',
-            y: [XS].includes(screenSize) ? '-100%' : 0,
+            x: [XS].includes(screenSize) ? 0 : '150%',
+            y: [XS].includes(screenSize) ? '-150%' : 0,
             transition: { type: 'spring', stiffness: 100, damping: 20 }
         },
         visible: {

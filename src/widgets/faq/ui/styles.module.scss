@@ -1,0 +1,41 @@
+.faq > div {
+  @include column(5rem);
+
+  @media (min-width: 992px) {
+    gap: 12.5rem;
+  }
+}
+
+.content {
+  @include flexibility(center, center, column);
+
+  gap: 5rem;
+  width: 100%;
+}
+
+.image {
+  width: 15rem;
+  height: auto;
+
+  @media (min-width: 576px) {
+    width: 28.4375rem;
+  }
+}
+
+.cards {
+  width: 100%;
+  display: grid;
+  gap: .75rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: 1600px) {
+    gap: 2.5rem;
+  }
+}
