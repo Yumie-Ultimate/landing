@@ -32,6 +32,10 @@
 
 .search-meta {
   @include column(1.5rem);
+
+  @media (min-width: 992px) {
+    overflow: auto;
+  }
 }
 
 .meta-description {
@@ -45,11 +49,10 @@
 .points {
   @include row(1.25rem);
 
-  overflow: hidden;
+  flex-wrap: wrap;
 
   @media (min-width: 768px) {
     flex-wrap: wrap;
-    overflow: auto;
   }
 
   @media (min-width: 992px) {
@@ -76,8 +79,9 @@
   width: min(100%, 30.5rem);
 }
 
+.security,
 .communication {
-  @include column(2.5rem);
+  @include column(2.25rem);
 
   @media (min-width: 992px) {
     gap: 3.125rem;
@@ -87,6 +91,26 @@
 .medium {
   @media (min-width: 1200px) {
     font-size: 6.25rem;
+  }
+}
+
+.small {
+  font-size: 2.5rem;
+
+  @media (min-width: 350px) {
+    font-size: 2.75rem;
+  }
+
+  @media (min-width: 420px) {
+    font-size: 3.25rem;
+  }
+
+  @media (min-width: 576px) {
+    font-size: 3.5rem;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 5.25rem;
   }
 }
 
@@ -113,4 +137,13 @@
 
 .item {
   @include text-20;
+}
+
+.security {
+  align-items: flex-end;
+  width: 100%;
+
+  & .description {
+    text-align: end;
+  }
 }

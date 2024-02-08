@@ -137,6 +137,13 @@ const Solutions = () => {
                             </ol>
                         </div>
                     </div>
+                    <div className={styles.security}>
+                        <h2 className={cn(styles.heading, styles.small)}>Безопасность</h2>
+                        <p className={styles.description}>
+                            Мы используем современные технологии <br /> и сквозное шифрование,
+                            можете не беспокоиться
+                        </p>
+                    </div>
                 </div>
             </Container>
         </div>
