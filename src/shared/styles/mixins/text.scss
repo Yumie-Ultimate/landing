@@ -61,11 +61,15 @@
   line-height: 140%;
   letter-spacing: -.025rem;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 992px) {
     font-size: 1.25rem;
   }
 
-  @media (min-width: 1600px) {
+  @media (min-width: 1400px) {
+    font-size: 1.55rem;
+  }
+
+  @media (min-width: 1800px) {
     font-size: 1.625rem;
   }
 }
@@ -202,7 +206,7 @@
   }
 }
 
-// Footer card
+// Footer
 
 @mixin text-45 {
   font-family: 'Nunito Sans', sans-serif;
