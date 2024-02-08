@@ -25,7 +25,6 @@ const Wrapper = ({ children }: Props) => {
     const { isFlexNavbarHidden } = useFlexNavbarStore()
 
     useScreenSize()
-    useScrollPrevention({ isFlexNavbarHidden })
 
     useEffect(() => {
         console.log(screenSize)

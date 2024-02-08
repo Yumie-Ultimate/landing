@@ -31,23 +31,13 @@ textarea {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #FFFFFF;
+  background-color: var(--accent-color-5);
 
   transition: background-color 500ms;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, .75);
-  }
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #000000;
-}
-
-body {
-  scrollbar-color: rgba(0, 0, 0, .50) rgba(0, 0, 0, .10);
-
-  scrollbar-width: thin;
+  background-color: var(--additional-color-5);
 }
 
 table, th, td, tbody, thead, tr {

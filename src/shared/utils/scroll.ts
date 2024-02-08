@@ -1,8 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
-
-import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
+import React, { useEffect } from 'react'
 
 export const preventScroll = (e: Event) => {
     e.preventDefault()
@@ -48,4 +46,14 @@ export const useScrollPrevention = (dependencies: { [key: string]: any }) => {
             removeScrollPrevention()
         }
     }, Object.values(dependencies))
+}
+
+export const scrollTo = (event: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    event.preventDefault()
+
+    const targetElement = document.querySelector(target)
+
+    if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' })
+    }
 }

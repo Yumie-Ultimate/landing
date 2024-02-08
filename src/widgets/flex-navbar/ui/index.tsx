@@ -12,6 +12,7 @@ import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
 import { ScreenSize, useScreenSizeStore } from '@/shared/model/screen'
 
 import NavbarClosingButton from '@/features/navbar-closing-button/ui'
+import { scrollTo } from '@/shared/utils/scroll'
 
 const FlexNavbar = () => {
     const { XS } = ScreenSize
@@ -45,6 +46,12 @@ const FlexNavbar = () => {
         )
     }, [isFlexNavbarHidden, controls])
 
+    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+        scrollTo(event, target)
+
+        setIsFlexNavbarHidden(true)
+    }
+
     return (
         <motion.nav
             className={styles.navbar}
@@ -55,22 +62,42 @@ const FlexNavbar = () => {
         >
             <ul className={styles.list}>
                 <li className={styles.item}>
-                    <Link className={styles.link} href='#we'>
+                    <Link
+                        className={styles.link}
+                        href='#we'
+                        passHref
+                        onClick={(event) => handleClick(event, '#we')}
+                    >
                         Мы
                     </Link>
                 </li>
                 <li className={styles.item}>
-                    <Link className={styles.link} href='#solutions'>
+                    <Link
+                        className={styles.link}
+                        href='#solutions'
+                        passHref
+                        onClick={(event) => handleClick(event, '#solutions')}
+                    >
                         Решения
                     </Link>
                 </li>
                 <li className={styles.item}>
-                    <Link className={styles.link} href='#interface'>
+                    <Link
+                        className={styles.link}
+                        href='#interface'
+                        passHref
+                        onClick={(event) => handleClick(event, '#interface')}
+                    >
                         Интерфейс
                     </Link>
                 </li>
                 <li className={styles.item}>
-                    <Link className={styles.link} href='#faq'>
+                    <Link
+                        className={styles.link}
+                        href='#faq'
+                        passHref
+                        onClick={(event) => handleClick(event, '#faq')}
+                    >
                         FAQ
                     </Link>
                 </li>
