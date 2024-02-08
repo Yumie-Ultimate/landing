@@ -26,7 +26,7 @@ const Header = () => {
                 <div className={styles.content}>
                     <Logo />
                     <div className={styles.part}>
-                        {[XL].includes(screenSize) && <Navbar />}
+                        <Navbar />
                         <ThemeToggle />
                     </div>
                 </div>
