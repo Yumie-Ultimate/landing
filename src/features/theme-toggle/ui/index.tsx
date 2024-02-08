@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import ToggleButton from '@/shared/ui/buttons/toggle'
 
@@ -8,8 +8,16 @@ const ThemeToggle = () => {
     const { theme, setTheme } = useThemeStore()
 
     const handleClick = () => {
-        setTheme(theme === Theme.Light ? Theme.Dark : Theme.Light)
+        const value = theme === Theme.Light ? Theme.Dark : Theme.Light
+
+        localStorage.setItem('theme', value)
+
+        setTheme(value)
     }
+
+    useEffect(() => {
+        document.body.setAttribute('data-theme', theme)
+    }, [theme])
 
     return <ToggleButton isOn={theme === Theme.Dark} onClick={() => handleClick()} />
 }

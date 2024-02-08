@@ -10,7 +10,7 @@ import { getCurrentScreenSize, useScreenSize, useScreenSizeStore } from '@/share
 
 import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
 
-import { useThemeStore } from '@/features/theme-toggle/model'
+import { getInitialTheme, useThemeStore } from '@/features/theme-toggle/model'
 
 import Header from '@/shared/ui/header'
 import Main from '@/shared/ui/main'
@@ -21,7 +21,7 @@ interface Props {
 }
 
 const Wrapper = ({ children }: Props) => {
-    const { theme } = useThemeStore()
+    const { theme, setTheme } = useThemeStore()
     const { screenSize, setScreenSize } = useScreenSizeStore()
     const { isFlexNavbarHidden } = useFlexNavbarStore()
 
@@ -30,12 +30,9 @@ const Wrapper = ({ children }: Props) => {
 
     useEffect(() => {
         setScreenSize(getCurrentScreenSize())
+        console.log(getInitialTheme())
+        setTheme(getInitialTheme())
     }, [])
-
-    useEffect(() => {
-        document.body.setAttribute('data-theme', theme)
-        localStorage.setItem('theme', theme)
-    }, [theme])
 
     return (
         <div className={styles.wrapper}>

@@ -10,7 +10,7 @@ export enum Theme {
     Dark = 'dark'
 }
 
-const getInitialTheme = (): Theme => {
+export const getInitialTheme = (): Theme => {
     if (typeof window !== 'undefined') {
         const savedTheme = localStorage.getItem('theme')
         return Object.values(Theme).includes(savedTheme as Theme)
@@ -22,6 +22,6 @@ const getInitialTheme = (): Theme => {
 }
 
 export const useThemeStore = create<IState>((set) => ({
-    theme: getInitialTheme(),
+    theme: Theme.Light,
     setTheme: (theme: Theme) => set({ theme })
 }))
