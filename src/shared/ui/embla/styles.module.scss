@@ -16,10 +16,10 @@
 .slide {
   position: relative;
   margin-right: .5rem;
+}
 
-  @media (min-width: 992px) {
-    display: flex;
-    padding: 2.5rem;
-    flex: 0 0 100%;
-  }
+.flash {
+  display: flex;
+  padding: 2.5rem;
+  flex: 0 0 100%;
 }

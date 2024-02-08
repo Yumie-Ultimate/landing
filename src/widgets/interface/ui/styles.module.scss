@@ -8,10 +8,14 @@
 
 .image {
   margin: 0 auto;
-  width: 20rem;
+  width: 15rem;
   height: auto;
   border-radius: 3.0rem;
   background: #FFFFFF;
+
+  @media (min-width: 420px) {
+    width: 20rem;
+  }
 
   [data-theme='light'] & {
     box-shadow: 0 0 1.05rem .5rem var(--transparent-color-45);
@@ -24,6 +28,8 @@
 
 .heading {
   @include text-40;
+
+  text-align: center;
 }
 
 .content {

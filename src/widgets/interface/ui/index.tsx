@@ -19,7 +19,7 @@ const Interface = () => {
                     <h2 className={styles.heading}>Посмотрите сами!</h2>
                 </div>
             </Container>
-            <Embla>
+            <Embla variant='flash'>
                 {screens.map((screen, index) => (
                     <Image
                         key={screen}
