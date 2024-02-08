@@ -17,10 +17,8 @@ interface IState {
     setScreenSize: (screenSize: ScreenSize) => void
 }
 
-const getCurrentScreenSize = () => {
+export const getCurrentScreenSize = () => {
     const width = document.body.clientWidth
-
-    console.log(width)
 
     if (width < ScreenSize.SM) return ScreenSize.XS
     if (width < ScreenSize.MD) return ScreenSize.SM
@@ -31,7 +29,7 @@ const getCurrentScreenSize = () => {
 }
 
 export const useScreenSizeStore = create<IState>((set) => ({
-    screenSize: getCurrentScreenSize(),
+    screenSize: ScreenSize.XS,
     setScreenSize: (screenSize: ScreenSize) => set({ screenSize })
 }))
 

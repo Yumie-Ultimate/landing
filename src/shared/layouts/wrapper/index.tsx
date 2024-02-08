@@ -6,7 +6,7 @@ import styles from './styles.module.scss'
 
 import { useScrollPrevention } from '@/shared/utils/scroll'
 
-import { useScreenSize, useScreenSizeStore } from '@/shared/model/screen'
+import { getCurrentScreenSize, useScreenSize, useScreenSizeStore } from '@/shared/model/screen'
 
 import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
 
@@ -22,15 +22,15 @@ interface Props {
 
 const Wrapper = ({ children }: Props) => {
     const { theme } = useThemeStore()
-    const { screenSize } = useScreenSizeStore()
+    const { screenSize, setScreenSize } = useScreenSizeStore()
     const { isFlexNavbarHidden } = useFlexNavbarStore()
 
     useScreenSize()
     useScrollPrevention({ isFlexNavbarHidden })
 
     useEffect(() => {
-        console.log(screenSize)
-    }, [screenSize])
+        setScreenSize(getCurrentScreenSize())
+    }, [])
 
     useEffect(() => {
         document.body.setAttribute('data-theme', theme)
