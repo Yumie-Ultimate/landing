@@ -88,7 +88,7 @@ const Solutions = () => {
     ]
 
     return (
-        <div id='solutions' className={styles.solutions}>
+        <section id='solutions' className={styles.solutions}>
             <Container>
                 <Mark index={0} name='Решения' />
                 <div className={styles.divisions}>
@@ -146,7 +146,7 @@ const Solutions = () => {
                     </div>
                 </div>
             </Container>
-        </div>
+        </section>
     )
 }
 

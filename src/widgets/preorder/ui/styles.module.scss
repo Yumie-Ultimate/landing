@@ -1,0 +1,60 @@
+.preorder {
+  & > div {
+    @include column(3.5rem);
+
+    @media (min-width: 768px) {
+      gap: 5rem;
+    }
+
+    @media (min-width: 1200px) {
+      @include flexibility(space-between, flex-start, row);
+    }
+
+    @media (min-width: 1600px) {
+      padding-inline: 5rem;
+    }
+  }
+}
+
+.heading {
+  @include text-70;
+
+  & > br {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: inline;
+    }
+  }
+}
+
+.label {
+  @include text-75;
+}
+
+.form {
+  @include column(5rem);
+
+  width: min(100%, 40rem);
+}
+
+.item {
+  @include column(.5rem);
+}
+
+.textarea,
+.input {
+  @include text-20;
+
+  border-bottom: .0625rem solid var(--transparent-color-25);
+  padding-block: .5rem;
+  width: 100%;
+}
+
+.textarea {
+  height: 7.5rem;
+
+  @media (min-width: 992px) {
+    height: 10rem;
+  }
+}

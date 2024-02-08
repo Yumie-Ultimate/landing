@@ -9,6 +9,7 @@ import FlexNavbar from '@/widgets/flex-navbar/ui'
 import Intro from '@/widgets/intro/ui'
 import We from '@/widgets/we/ui'
 import Solutions from '@/widgets/solutions/ui'
+import Preorder from '@/widgets/preorder/ui'
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <Intro />
             <We />
             <Solutions />
+            <Preorder />
             <FlexNavbar />
         </Wrapper>
     )
