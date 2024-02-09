@@ -42,8 +42,6 @@ const FaqCard = ({ gradient, name, text }: Props) => {
     }
 
     useEffect(() => {
-        console.log(isHovered)
-
         setDynamicStyle(
             isHovered || isExpanded
                 ? {

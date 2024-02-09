@@ -19,7 +19,7 @@
 
 @mixin text-10 {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 600;
   font-stretch: 125%;
   line-height: 140%;
@@ -27,7 +27,15 @@
 
   font-variation-settings: 'opsz' 6;
 
+  @media (min-width: 350px) {
+    font-size: 1.05rem;
+  }
+
   @media (min-width: 576px) {
+    font-size: 1.5rem;
+  }
+
+  @media (min-width: 992px) {
     font-size: 1.875rem;
   }
 }

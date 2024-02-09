@@ -42,7 +42,7 @@ const Solutions = () => {
         },
         {
             name: 'Рок',
-            variant: 'standard'
+            variant: 'accent'
         },
         {
             name: 'Медитация',
@@ -50,7 +50,7 @@ const Solutions = () => {
         },
         {
             name: 'Пешие прогулки',
-            variant: 'standard'
+            variant: 'accent'
         },
         {
             name: 'Астрономия',
@@ -81,9 +81,10 @@ const Solutions = () => {
         <span>возраст</span>,
         <span>пол</span>,
         <span>расстояние</span>,
-        <span>имя</span>,
+        <span>активность</span>,
+        <span>образование</span>,
         <span>
-            user<span className={styles.accent}>name</span>
+            род <span className={styles.accent}>деятельности</span>
         </span>
     ]
 
@@ -112,7 +113,7 @@ const Solutions = () => {
                     </div>
                     <div className={styles['search-meta']}>
                         <p className={styles['meta-description']}>
-                            Но вы можете использовать и параметры
+                            Но вы можете использовать и привычные параметры
                         </p>
                         <div className={styles.points}>
                             {points.map((point, index) => {

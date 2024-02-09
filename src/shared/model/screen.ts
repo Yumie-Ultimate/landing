@@ -40,8 +40,6 @@ export const useScreenSize = () => {
         const handleResize = () => {
             const newSize = getCurrentScreenSize()
 
-            console.log(newSize)
-
             setScreenSize(newSize)
         }
 

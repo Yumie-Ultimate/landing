@@ -30,7 +30,6 @@ const Wrapper = ({ children }: Props) => {
 
     useEffect(() => {
         setScreenSize(getCurrentScreenSize())
-        console.log(getInitialTheme())
         setTheme(getInitialTheme())
     }, [])
 
