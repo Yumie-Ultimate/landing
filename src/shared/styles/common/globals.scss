@@ -10,11 +10,16 @@
   background: var(--transparent-color-15);
 }
 
+* {
+  cursor: none;
+}
+
 body {
   font-family: 'Nunito Sans', sans-serif;
   line-height: 140%;
   color: var(--primary-color-5);
   background: var(--additional-color-5);
+  min-width: 320px;
 }
 
 a {

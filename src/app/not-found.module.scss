@@ -1,0 +1,16 @@
+.wrapper {
+  @include flexibility(center, center, column);
+
+  gap: 2.5rem;
+  width: 100%;
+  min-height: 100vh;
+
+  & h1 {
+    text-align: center;
+    font-size: clamp(1.5rem, 20vw, 10rem);
+    font-family: 'SF Pro Text', sans-serif;
+    font-weight: 200;
+    line-height: 100%;
+    color: var(--transparent-color-5)
+  }
+}

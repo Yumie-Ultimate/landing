@@ -42,7 +42,7 @@ const Solutions = () => {
         },
         {
             name: 'Рок',
-            variant: 'standard'
+            variant: 'accent'
         },
         {
             name: 'Медитация',
@@ -50,7 +50,7 @@ const Solutions = () => {
         },
         {
             name: 'Пешие прогулки',
-            variant: 'standard'
+            variant: 'accent'
         },
         {
             name: 'Астрономия',
@@ -81,9 +81,10 @@ const Solutions = () => {
         <span>возраст</span>,
         <span>пол</span>,
         <span>расстояние</span>,
-        <span>имя</span>,
+        <span>активность</span>,
+        <span>образование</span>,
         <span>
-            user<span className={styles.accent}>name</span>
+            род <span className={styles.accent}>деятельности</span>
         </span>
     ]
 
@@ -100,8 +101,9 @@ const Solutions = () => {
                                 интересных вам людей
                             </p>
                             <div className={styles.tags}>
-                                {tags.map((tag) => (
+                                {tags.map((tag, index) => (
                                     <Tag
+                                        key={index}
                                         name={tag.name}
                                         variant={tag.variant as 'standard' | 'accent'}
                                     />
@@ -114,8 +116,8 @@ const Solutions = () => {
                             Но вы можете использовать и привычные параметры
                         </p>
                         <div className={styles.points}>
-                            {points.map((point) => {
-                                return <Point>{point}</Point>
+                            {points.map((point, index) => {
+                                return <Point key={index}>{point}</Point>
                             })}
                         </div>
                     </div>

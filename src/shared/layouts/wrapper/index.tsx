@@ -1,48 +1,68 @@
 'use client'
 
-import React, { ReactNode, useEffect } from 'react'
+import React, { ReactNode, Suspense, useEffect, useState } from 'react'
 
 import styles from './styles.module.scss'
 
 import { useScrollPrevention } from '@/shared/utils/scroll'
 
-import { useScreenSize, useScreenSizeStore } from '@/shared/model/screen'
+import { getCurrentScreenSize, useScreenSize, useScreenSizeStore } from '@/shared/model/screen'
 
 import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
 
-import { useThemeStore } from '@/features/theme-toggle/model'
+import { getInitialTheme, useThemeStore } from '@/features/theme-toggle/model'
 
-import Header from '@/shared/ui/header'
-import Main from '@/shared/ui/main'
-import Footer from '@/shared/ui/footer'
+const Cursor = React.lazy(() => import('@/features/cursor/ui'))
+
+const Header = React.lazy(() => import('@/shared/ui/header'))
+const Main = React.lazy(() => import('@/shared/ui/main'))
+const Footer = React.lazy(() => import('@/shared/ui/footer'))
+
+const FlexNavbar = React.lazy(() => import('@/widgets/flex-navbar/ui'))
+
+import Loading from '@/widgets/loading/ui'
+import { useLoadingStore } from '@/widgets/loading/model'
 
 interface Props {
     children: ReactNode
 }
 
 const Wrapper = ({ children }: Props) => {
-    const { theme } = useThemeStore()
-    const { screenSize } = useScreenSizeStore()
+    const { theme, setTheme } = useThemeStore()
+    const { screenSize, setScreenSize } = useScreenSizeStore()
     const { isFlexNavbarHidden } = useFlexNavbarStore()
+
+    const { isLoading, setIsLoading } = useLoadingStore()
 
     useScreenSize()
     useScrollPrevention({ isFlexNavbarHidden })
 
     useEffect(() => {
-        console.log(screenSize)
-    }, [screenSize])
+        setScreenSize(getCurrentScreenSize())
+        setTheme(getInitialTheme())
 
-    useEffect(() => {
-        document.body.setAttribute('data-theme', theme)
-        localStorage.setItem('theme', theme)
-    }, [theme])
+        const timer = setTimeout(() => {
+            setIsLoading(false)
+        }, 100)
+
+        return () => clearTimeout(timer)
+    }, [])
 
     return (
-        <div className={styles.wrapper}>
-            <Header />
-            <Main>{children}</Main>
-            <Footer />
-        </div>
+        <>
+            <Loading />
+            {!isLoading && (
+                <Suspense fallback={<Loading />}>
+                    <div className={styles.wrapper}>
+                        <Header />
+                        <Main>{children}</Main>
+                        <Footer />
+                        <FlexNavbar />
+                        <Cursor />
+                    </div>
+                </Suspense>
+            )}
+        </>
     )
 }
 

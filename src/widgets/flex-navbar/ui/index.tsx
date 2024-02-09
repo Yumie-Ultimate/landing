@@ -22,21 +22,23 @@ const FlexNavbar = () => {
 
     const controls = useAnimation()
 
+    const transition = { type: 'spring', stiffness: 500, damping: 50 }
+
     const variants = {
         hidden: {
             x: [XS].includes(screenSize) ? 0 : '150%',
             y: [XS].includes(screenSize) ? '-150%' : 0,
-            transition: { type: 'spring', stiffness: 100, damping: 20 }
+            transition
         },
         visible: {
             x: 0,
             y: 0,
-            transition: { type: 'spring', stiffness: 100, damping: 20 }
+            transition
         },
         aside: {
             x: '100%',
             y: 0,
-            transition: { type: 'spring', stiffness: 100, damping: 20 }
+            transition
         }
     }
 
@@ -46,8 +48,12 @@ const FlexNavbar = () => {
         )
     }, [isFlexNavbarHidden, controls])
 
-    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>, target: string) => {
-        scrollTo(event, target)
+    const handleClick = (
+        event: React.MouseEvent<HTMLAnchorElement>,
+        target: string,
+        offset = 0
+    ) => {
+        scrollTo(event, target, offset)
 
         setIsFlexNavbarHidden(true)
     }
@@ -66,7 +72,7 @@ const FlexNavbar = () => {
                         className={styles.link}
                         href='#we'
                         passHref
-                        onClick={(event) => handleClick(event, '#we')}
+                        onClick={(event) => handleClick(event, '#we', -100)}
                     >
                         Мы
                     </Link>

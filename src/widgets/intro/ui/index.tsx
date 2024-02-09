@@ -49,29 +49,33 @@ const Intro = () => {
                         >
                             <MainButton variant='accent'>Попробовать</MainButton>
                         </Link>
-                        <Link href='/identify'>
-                            <MainButton>Айдентика</MainButton>
+                        <Link
+                            href='#interface'
+                            passHref
+                            onClick={(event) => scrollTo(event, '#interface')}
+                        >
+                            <MainButton>Посмотреть</MainButton>
                         </Link>
                     </div>
                 </div>
-                <Image
-                    className={cn(styles['absolute-background'], styles['absolute-background-1'])}
-                    src={`/images/vector/${theme}/background-1.svg`}
-                    alt='Blue'
-                    width={3000}
-                    height={3000}
-                    draggable={false}
-                    loading='eager'
-                />
-                <Image
-                    className={cn(styles['absolute-background'], styles['absolute-background-2'])}
-                    src={`/images/vector/${theme}/background-2.svg`}
-                    alt='Pink'
-                    width={3000}
-                    height={3000}
-                    draggable={false}
-                    loading='eager'
-                />
+                {/*<Image*/}
+                {/*    className={cn(styles['absolute-background'], styles['absolute-background-1'])}*/}
+                {/*    src={`/images/vector/${theme}/background-1.svg`}*/}
+                {/*    alt='Blue'*/}
+                {/*    width={3000}*/}
+                {/*    height={3000}*/}
+                {/*    draggable={false}*/}
+                {/*    loading='eager'*/}
+                {/*/>*/}
+                {/*<Image*/}
+                {/*    className={cn(styles['absolute-background'], styles['absolute-background-2'])}*/}
+                {/*    src={`/images/vector/${theme}/background-2.svg`}*/}
+                {/*    alt='Pink'*/}
+                {/*    width={3000}*/}
+                {/*    height={3000}*/}
+                {/*    draggable={false}*/}
+                {/*    loading='eager'*/}
+                {/*/>*/}
             </Container>
         </div>
     )
