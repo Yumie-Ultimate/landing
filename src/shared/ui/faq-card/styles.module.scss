@@ -19,6 +19,8 @@
 
 .text {
   @include text-20;
+
+  color: var(--additional-color-5);
 }
 
 .icon {

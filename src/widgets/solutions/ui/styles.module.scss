@@ -66,6 +66,14 @@
 
 .description {
   @include text-20;
+
+  & > br {
+    display: none;
+
+    @media (min-width: 450px) {
+      display: inline;
+    }
+  }
 }
 
 .heading {
