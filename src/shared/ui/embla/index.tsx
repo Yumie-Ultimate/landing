@@ -1,6 +1,6 @@
 'use client'
 
-import React, { ReactNode } from 'react'
+import React, { Children, ReactNode, useEffect, useState } from 'react'
 
 import useEmblaCarousel from 'embla-carousel-react'
 
@@ -14,19 +14,57 @@ interface Props {
 }
 
 const Embla = ({ children, variant = 'standard' }: Props) => {
-    const [emblaRef] = useEmblaCarousel({ align: 'center', loop: variant === 'flash' })
+    const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'center', loop: variant === 'flash' })
+
+    const [selectedIndex, setSelectedIndex] = useState(0)
+
+    const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
+
+    useEffect(() => {
+        if (emblaApi) {
+            const updateScrollSnaps = () => {
+                setScrollSnaps(emblaApi.scrollSnapList())
+            }
+
+            const onSelect = () => {
+                setSelectedIndex(emblaApi.selectedScrollSnap())
+            }
+
+            updateScrollSnaps()
+            emblaApi.on('select', onSelect)
+            onSelect()
+
+            return () => {
+                emblaApi.off('select', onSelect)
+            }
+        }
+    }, [emblaApi])
+
+    const dots = Children.map(children, (_, index) => (
+        <button
+            key={index}
+            className={cn(styles.dot, { [styles.isActive]: index === selectedIndex })}
+            onClick={() => {
+                if (emblaApi) {
+                    emblaApi.scrollTo(index)
+                }
+            }}
+            aria-label={`Go to slide ${index + 1}`}
+        ></button>
+    ))
 
     return (
         <div className={styles.embla}>
             <div className={styles.viewport} ref={emblaRef}>
                 <div className={styles.container}>
-                    {React.Children.map(children, (child, index) => (
+                    {Children.map(children, (child, index) => (
                         <div key={index} className={cn(styles.slide, styles[variant])}>
                             {child}
                         </div>
                     ))}
                 </div>
             </div>
+            {variant === 'flash' && <div className={styles.dots}>{dots}</div>}
         </div>
     )
 }

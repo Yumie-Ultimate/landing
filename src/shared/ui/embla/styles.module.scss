@@ -1,4 +1,7 @@
 .embla {
+  @include flexibility(center, center, column);
+
+  gap: 2.5rem;
   width: 100dvw;
   overflow: hidden;
 }
@@ -23,3 +26,18 @@
   padding: 2.5rem;
   flex: 0 0 100%;
 }
+
+.dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: var(--transparent-color-5);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.isActive {
+  background-color: var(--primary-color-5);
+}
+

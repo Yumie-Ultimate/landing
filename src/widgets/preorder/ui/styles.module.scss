@@ -54,6 +54,10 @@
   border-bottom: .0625rem solid var(--transparent-color-25);
   padding-block: .5rem;
   width: 100%;
+
+  &:focus {
+    border-color: var(--accent-color-5);
+  }
 }
 
 .textarea {
