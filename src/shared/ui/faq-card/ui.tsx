@@ -19,13 +19,13 @@ const FaqCard = ({ gradient, name, text }: Props) => {
 
     const [isExpanded, setIsExpanded] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
-    const [isAbandoned, setIsAbandoned] = useState(false)
+    const [isAbandoned, setIsAbandoned] = useState(true)
 
     const [dynamicStyle, setDynamicStyle] = useState({})
 
     const variants = {
         hover: {
-            scale: 1.05,
+            scale: 1.025,
             transition: { type: 'spring', stiffness: 300 }
         },
         expanded: {
@@ -45,7 +45,7 @@ const FaqCard = ({ gradient, name, text }: Props) => {
         console.log(isHovered)
 
         setDynamicStyle(
-            isHovered
+            isHovered || isExpanded
                 ? {
                       outlineColor: 'var(--primary-color-5)',
                       background: 'var(--primary-color-5)'
@@ -55,7 +55,7 @@ const FaqCard = ({ gradient, name, text }: Props) => {
                       background: `var(--${gradient})`
                   }
         )
-    }, [isHovered])
+    }, [isHovered, isExpanded])
 
     return (
         <motion.div

@@ -112,7 +112,7 @@ const Solutions = () => {
                     </div>
                     <div className={styles['search-meta']}>
                         <p className={styles['meta-description']}>
-                            Но вы можете использовать и привычные параметры
+                            Но вы можете использовать и параметры
                         </p>
                         <div className={styles.points}>
                             {points.map((point, index) => {

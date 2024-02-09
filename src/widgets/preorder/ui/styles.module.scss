@@ -1,10 +1,6 @@
 .preorder {
   & > div {
-    @include column(3.5rem);
-
-    @media (min-width: 768px) {
-      gap: 5rem;
-    }
+    @include column(5rem);
 
     @media (min-width: 1200px) {
       @include flexibility(space-between, flex-start, row);

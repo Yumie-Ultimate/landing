@@ -29,7 +29,7 @@ const Interface = () => {
                         width={400}
                         height={880}
                         draggable={false}
-                        loading={index === 0 ? 'eager' : 'lazy'}
+                        loading='eager'
                     />
                 ))}
             </Embla>

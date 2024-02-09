@@ -36,13 +36,13 @@
 
 @mixin text-15 {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 500;
   font-stretch: 100%;
   line-height: 140%;
   letter-spacing: -.025rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 400px) {
     font-size: 1.5rem;
   }
 
@@ -55,7 +55,7 @@
 
 @mixin text-20 {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: .985rem;
+  font-size: 1.15rem;
   font-stretch: 110%;
   font-weight: 400;
   line-height: 140%;

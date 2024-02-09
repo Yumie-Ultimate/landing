@@ -9,6 +9,10 @@
   width: 17.5rem;
   user-select: none;
 
+  @media (min-width: 375px) {
+    width: 20rem;
+  }
+
   @media (min-width: 576px) {
     width: 25rem;
   }
@@ -28,7 +32,7 @@
 .heading {
   @include text-15;
 
-  padding-block: .75rem;
+  padding-block: .75rem .25rem;
 
   @media (min-width: 992px) {
     padding-block: 1.25rem;

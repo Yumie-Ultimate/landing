@@ -16,7 +16,7 @@ interface Props {
 const Embla = ({ children, variant = 'standard' }: Props) => {
     const [emblaRef] = useEmblaCarousel({ align: 'center' })
 
-    useEmblaCarousel.globalOptions = { loop: variant === 'flash' }
+    useEmblaCarousel.globalOptions = { loop: false }
 
     return (
         <div className={styles.embla}>

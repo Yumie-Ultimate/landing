@@ -1,9 +1,14 @@
 .interface {
   @include flexibility(center, center, column);
 
-  gap: 10rem;
-  padding-block: 10rem;
+  gap: 5rem;
+  padding-block: 5rem;
   position: relative;
+
+  @media (min-width: 1200px) {
+    padding-block: 10rem;
+    gap: 10rem;
+  }
 }
 
 .image {

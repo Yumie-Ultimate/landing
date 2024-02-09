@@ -1,4 +1,6 @@
 .button {
+  @include flexibility(center, center);
+
   @media (min-width: 1200px) {
     display: none;
   }
