@@ -2,7 +2,7 @@
   @include flexibility(center, center, column);
 
   gap: 5rem;
-  padding-block: 8.5rem;
+  padding-block: 10.5rem 8.5rem;
   position: relative;
 
   @media (min-width: 768px) {

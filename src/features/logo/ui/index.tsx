@@ -7,13 +7,17 @@ import styles from './styles.module.scss'
 
 import { useThemeStore } from '@/features/theme-toggle/model'
 
-const Logo = () => {
+interface Props {
+    variant?: 'standard' | 'basic'
+}
+
+const Logo = ({ variant = 'standard' }: Props) => {
     const { theme, setTheme } = useThemeStore()
 
     return (
         <Link className={styles.logo} href='/'>
             <Image
-                src={`/images/vector/${theme}/logo.svg`}
+                src={`/images/vector/${theme}/${variant}-logo.svg`}
                 alt='Yumie'
                 width={200}
                 height={200}

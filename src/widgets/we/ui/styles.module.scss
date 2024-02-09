@@ -13,7 +13,11 @@
     height: 24.125rem;
   }
 
-  @media (min-width: 1700px) {
+  @media (min-width: 1600px) {
+    padding-inline: 2.5rem;
+  }
+
+  @media (min-width: 1920px) {
     padding-inline: 9.375rem;
   }
 }

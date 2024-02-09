@@ -1,8 +1,16 @@
-.faq > div {
-  @include column(5rem);
+.faq {
+  padding-bottom: 5rem;
 
-  @media (min-width: 992px) {
-    gap: 12.5rem;
+  @media (min-width: 1200px) {
+    padding-bottom: 12.5rem;
+  }
+
+  & > div {
+    @include column(5rem);
+
+    @media (min-width: 992px) {
+      gap: 12.5rem;
+    }
   }
 }
 

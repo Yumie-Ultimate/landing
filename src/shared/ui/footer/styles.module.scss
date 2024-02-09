@@ -1,0 +1,55 @@
+.footer {
+  width: 100%;
+}
+
+.block {
+  @include flexibility(space-between, baseline, column);
+
+  gap: 2.5rem;
+  padding-top: 1.25rem;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    padding-block: 1.25rem;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+
+  &:last-of-type {
+    padding-bottom: 2.5rem;
+  }
+}
+
+.line {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    width: 100%;
+  }
+}
+
+.mono {
+  @include text-45;
+
+  color: var(--transparent-color-25);
+  width: fit-content;
+}
+
+.links {
+  @include column(1.5rem);
+
+  @media (min-width: 400px) {
+    flex-direction: row;
+  }
+
+  @media (min-width: 768px) {
+    gap: 3.125rem;
+  }
+}
+
+.link {
+  &:hover {
+    color: var(--accent-color-5);
+  }
+}
