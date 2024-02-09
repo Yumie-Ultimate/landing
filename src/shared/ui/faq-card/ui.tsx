@@ -58,6 +58,7 @@ const FaqCard = ({ gradient, name, text }: Props) => {
     return (
         <motion.div
             className={styles.card}
+            data-cursor-interact={true}
             style={dynamicStyle}
             initial='initial'
             variants={variants}

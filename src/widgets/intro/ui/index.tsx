@@ -49,8 +49,12 @@ const Intro = () => {
                         >
                             <MainButton variant='accent'>Попробовать</MainButton>
                         </Link>
-                        <Link href='/identify'>
-                            <MainButton>Айдентика</MainButton>
+                        <Link
+                            href='#interface'
+                            passHref
+                            onClick={(event) => scrollTo(event, '#interface')}
+                        >
+                            <MainButton>Посмотреть</MainButton>
                         </Link>
                     </div>
                 </div>

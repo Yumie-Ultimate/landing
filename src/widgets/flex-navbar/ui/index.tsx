@@ -22,21 +22,23 @@ const FlexNavbar = () => {
 
     const controls = useAnimation()
 
+    const transition = { type: 'spring', stiffness: 500, damping: 50 }
+
     const variants = {
         hidden: {
             x: [XS].includes(screenSize) ? 0 : '150%',
             y: [XS].includes(screenSize) ? '-150%' : 0,
-            transition: { type: 'spring', stiffness: 100, damping: 20 }
+            transition
         },
         visible: {
             x: 0,
             y: 0,
-            transition: { type: 'spring', stiffness: 100, damping: 20 }
+            transition
         },
         aside: {
             x: '100%',
             y: 0,
-            transition: { type: 'spring', stiffness: 100, damping: 20 }
+            transition
         }
     }
 

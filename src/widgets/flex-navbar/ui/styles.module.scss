@@ -23,6 +23,8 @@
 
 .list {
   @include column(1rem);
+
+  width: 100%;
 }
 
 .item {

@@ -1,10 +1,8 @@
 import React from 'react'
 
-import Image from 'next/image'
-
 import Wrapper from '@/shared/layouts/wrapper'
 
-import ScrollUp from '@/features/scroll-up/ui'
+import CustomCursor from '@/features/custom-cursor/ui'
 
 import FlexNavbar from '@/widgets/flex-navbar/ui'
 
@@ -25,6 +23,7 @@ const Home = () => {
             <Preorder />
             <Faq />
             <FlexNavbar />
+            <CustomCursor />
         </Wrapper>
     )
 }

@@ -5,7 +5,6 @@
 }
 
 .viewport {
-  cursor: pointer;
   padding-inline: 1.5rem;
   overflow: hidden;
 }
@@ -29,14 +28,20 @@
   }
 }
 
+.dots {
+  display: flex;
+}
+
+.dot-wrapper {
+  padding: .25rem .5rem;
+}
+
 .dot {
-  width: 10px;
-  height: 10px;
-  margin: 0 5px;
+  width: .625rem;
+  height: .625rem;
   background-color: var(--transparent-color-5);
   border: none;
   border-radius: 50%;
-  cursor: pointer;
 }
 
 .isActive {

@@ -41,20 +41,25 @@ const Embla = ({ children, variant = 'standard' }: Props) => {
     }, [emblaApi])
 
     const dots = Children.map(children, (_, index) => (
-        <button
-            key={index}
-            className={cn(styles.dot, { [styles.isActive]: index === selectedIndex })}
+        <div
+            className={styles['dot-wrapper']}
+            data-cursor-interact={true}
             onClick={() => {
                 if (emblaApi) {
                     emblaApi.scrollTo(index)
                 }
             }}
-            aria-label={`Go to slide ${index + 1}`}
-        ></button>
+        >
+            <button
+                key={index}
+                className={cn(styles.dot, { [styles.isActive]: index === selectedIndex })}
+                aria-label={`Go to slide ${index + 1}`}
+            ></button>
+        </div>
     ))
 
     return (
-        <div className={cn(styles.embla, styles[variant])}>
+        <div className={cn(styles.embla, styles[variant])} data-cursor-interact={true}>
             <div className={styles.viewport} ref={emblaRef}>
                 <div className={styles.container}>
                     {Children.map(children, (child, index) => (
