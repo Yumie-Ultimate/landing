@@ -4,9 +4,11 @@ import React, { useEffect, useState, useRef } from 'react'
 
 import { motion } from 'framer-motion'
 
-type CursorVariant = 'default' | 'pointing'
+import { ScreenSize, useScreenSizeStore } from '@/shared/model/screen'
 
-interface CursorStyle {
+type Variant = 'default' | 'pointing'
+
+interface Style {
     width: string
     height: string
     borderRadius?: string
@@ -16,12 +18,19 @@ interface CursorStyle {
     zIndex: number
 }
 
-const CustomCursor: React.FC = () => {
+const CustomCursor = () => {
+    const { XL, LG } = ScreenSize
+
+    const { screenSize } = useScreenSizeStore()
+
+    const [isHidden, setIsHidden] = useState(false)
+
     const [position, setPosition] = useState({ x: -100, y: -100 })
-    const [cursorVariant, setCursorVariant] = useState<CursorVariant>('default')
+    const [cursorVariant, setCursorVariant] = useState<Variant>('default')
+
     const frameId = useRef<number | null>(null)
 
-    const cursorStyles: Record<CursorVariant, CursorStyle> = {
+    const styles: Record<Variant, Style> = {
         default: {
             width: '1.0rem',
             height: '1.0rem',
@@ -38,6 +47,12 @@ const CustomCursor: React.FC = () => {
             position: 'fixed',
             pointerEvents: 'none',
             zIndex: 9999
+        }
+    }
+
+    const variants = {
+        default: {
+            ...position
         }
     }
 
@@ -75,20 +90,38 @@ const CustomCursor: React.FC = () => {
         }
     }, [])
 
-    const isTouchDevice = () => {
-        return 'ontouchstart' in window || navigator.maxTouchPoints > 0
-    }
+    useEffect(() => {
+        const isTouchDevice = () => {
+            const touchSupported = 'ontouchstart' in window || navigator.maxTouchPoints > 0
 
-    if (isTouchDevice()) return null
+            const screenWidth = window.innerWidth || document.documentElement.clientWidth
+
+            console.log(XL, LG)
+
+            console.log(screenSize)
+
+            console.log([XL, LG].includes(screenSize))
+
+            const isMobileWidth = ![XL, LG].includes(screenSize)
+
+            return touchSupported && isMobileWidth
+        }
+
+        setIsHidden(isTouchDevice())
+    }, [screenSize])
+
+    if (isHidden) return false
 
     return (
         <motion.div
             style={{
-                ...cursorStyles[cursorVariant],
+                ...styles[cursorVariant],
                 x: position.x,
                 y: position.y
             }}
-            transition={{ type: 'spring', stiffness: 1500, damping: 30 }}
+            animate='default'
+            variants={variants}
+            transition={{ type: 'spring', stiffness: 5000, damping: 50 }}
         />
     )
 }
