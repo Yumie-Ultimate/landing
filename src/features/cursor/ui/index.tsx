@@ -90,29 +90,31 @@ const Cursor = () => {
         }
     }, [])
 
+    const isTouchDevice = () => {
+        const touchSupported = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+
+        const screenWidth = window.innerWidth || document.documentElement.clientWidth
+
+        const isMobileWidth = screenWidth < 1024
+
+        return touchSupported && isMobileWidth
+    }
+
     useEffect(() => {
-        const isTouchDevice = () => {
-            const touchSupported = 'ontouchstart' in window || navigator.maxTouchPoints > 0
-
-            const screenWidth = window.innerWidth || document.documentElement.clientWidth
-
-            const isMobileWidth = screenWidth < 1024
-
-            return touchSupported && isMobileWidth
-        }
-
         setIsHidden(isTouchDevice())
     }, [screenSize])
 
     useEffect(() => {
-        const { clientWidth, clientHeight } = document.documentElement
+        if (!isTouchDevice()) {
+            const { clientWidth, clientHeight } = document.documentElement
 
-        setIsHidden(
-            position.x <= 0 ||
-                position.y <= 0 ||
-                position.x >= clientWidth - 10 ||
-                position.y >= clientHeight - 10
-        )
+            setIsHidden(
+                position.x <= 0 ||
+                    position.y <= 0 ||
+                    position.x >= clientWidth - 10 ||
+                    position.y >= clientHeight - 10
+            )
+        }
     }, [position])
 
     if (isHidden) return false

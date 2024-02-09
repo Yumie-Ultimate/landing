@@ -1,6 +1,6 @@
 'use client'
 
-import React, { ReactNode, Suspense, useEffect, useState } from 'react'
+import React, { lazy, ReactNode, Suspense, useEffect, useState } from 'react'
 
 import styles from './styles.module.scss'
 
@@ -12,16 +12,16 @@ import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
 
 import { getInitialTheme, useThemeStore } from '@/features/theme-toggle/model'
 
-const Cursor = React.lazy(() => import('@/features/cursor/ui'))
+import { useLoadingStore } from '@/widgets/loading/model'
 
-const Header = React.lazy(() => import('@/shared/ui/header'))
-const Main = React.lazy(() => import('@/shared/ui/main'))
-const Footer = React.lazy(() => import('@/shared/ui/footer'))
+const Header = lazy(() => import('@/shared/ui/header'))
+const Main = lazy(() => import('@/shared/ui/main'))
+const Footer = lazy(() => import('@/shared/ui/footer'))
 
-const FlexNavbar = React.lazy(() => import('@/widgets/flex-navbar/ui'))
+const FlexNavbar = lazy(() => import('@/widgets/flex-navbar/ui'))
 
 import Loading from '@/widgets/loading/ui'
-import { useLoadingStore } from '@/widgets/loading/model'
+import Cursor from '@/features/cursor/ui'
 
 interface Props {
     children: ReactNode
