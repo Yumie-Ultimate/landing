@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Children, ReactNode, useEffect, useState } from 'react'
+import React, { Children, ReactNode, useEffect, useRef, useState } from 'react'
 
 import useEmblaCarousel from 'embla-carousel-react'
 
@@ -16,9 +16,11 @@ interface Props {
 const Embla = ({ children, variant = 'standard' }: Props) => {
     const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'center', loop: variant === 'flash' })
 
-    const [selectedIndex, setSelectedIndex] = useState(0)
+    const intervalRef = useRef<NodeJS.Timeout>()
 
+    const [selectedIndex, setSelectedIndex] = useState(0)
     const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
+    const [swipedByUser, setSwipedByUser] = useState<boolean>(false)
 
     useEffect(() => {
         if (emblaApi) {
@@ -30,15 +32,41 @@ const Embla = ({ children, variant = 'standard' }: Props) => {
                 setSelectedIndex(emblaApi.selectedScrollSnap())
             }
 
+            const onPointerDown = () => {
+                setSwipedByUser(true)
+            }
+
             updateScrollSnaps()
+
+            emblaApi.on('pointerDown', onPointerDown)
             emblaApi.on('select', onSelect)
+
             onSelect()
 
             return () => {
                 emblaApi.off('select', onSelect)
             }
         }
-    }, [emblaApi])
+    }, [emblaApi, swipedByUser])
+
+    useEffect(() => {
+        if (variant === 'flash') {
+            clearInterval(intervalRef.current)
+
+            intervalRef.current = setInterval(
+                () => {
+                    if (emblaApi) {
+                        emblaApi.scrollNext()
+
+                        setSwipedByUser(false)
+                    }
+                },
+                swipedByUser ? 20000 : 5000
+            )
+
+            return () => clearInterval(intervalRef.current)
+        }
+    }, [emblaApi, swipedByUser])
 
     const dots = Children.map(children, (_, index) => (
         <div
