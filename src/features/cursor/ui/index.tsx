@@ -18,7 +18,7 @@ interface Style {
     zIndex: number
 }
 
-const CustomCursor = () => {
+const Cursor = () => {
     const { XL, LG } = ScreenSize
 
     const { screenSize } = useScreenSizeStore()
@@ -96,13 +96,7 @@ const CustomCursor = () => {
 
             const screenWidth = window.innerWidth || document.documentElement.clientWidth
 
-            console.log(XL, LG)
-
-            console.log(screenSize)
-
-            console.log([XL, LG].includes(screenSize))
-
-            const isMobileWidth = ![XL, LG].includes(screenSize)
+            const isMobileWidth = screenWidth < 1024
 
             return touchSupported && isMobileWidth
         }
@@ -110,12 +104,25 @@ const CustomCursor = () => {
         setIsHidden(isTouchDevice())
     }, [screenSize])
 
+    useEffect(() => {
+        const { clientWidth, clientHeight } = document.documentElement
+
+        setIsHidden(
+            position.x <= 0 ||
+                position.y <= 0 ||
+                position.x >= clientWidth - 10 ||
+                position.y >= clientHeight - 10
+        )
+    }, [position])
+
     if (isHidden) return false
 
     return (
         <motion.div
             style={{
                 ...styles[cursorVariant],
+                top: 0,
+                left: 0,
                 x: position.x,
                 y: position.y
             }}
@@ -126,4 +133,4 @@ const CustomCursor = () => {
     )
 }
 
-export default CustomCursor
+export default Cursor

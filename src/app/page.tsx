@@ -2,10 +2,6 @@ import React from 'react'
 
 import Wrapper from '@/shared/layouts/wrapper'
 
-import CustomCursor from '@/features/custom-cursor/ui'
-
-import FlexNavbar from '@/widgets/flex-navbar/ui'
-
 import Intro from '@/widgets/intro/ui'
 import We from '@/widgets/we/ui'
 import Solutions from '@/widgets/solutions/ui'
@@ -22,8 +18,6 @@ const Home = () => {
             <Screens />
             <Preorder />
             <Faq />
-            <FlexNavbar />
-            <CustomCursor />
         </Wrapper>
     )
 }
