@@ -15,7 +15,7 @@ const Navbar = () => {
                         className={styles.link}
                         href='#we'
                         passHref
-                        onClick={(event) => scrollTo(event, '#we')}
+                        onClick={(event) => scrollTo(event, '#we', -200)}
                     >
                         Мы
                     </Link>

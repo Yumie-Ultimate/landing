@@ -48,12 +48,39 @@ export const useScrollPrevention = (dependencies: { [key: string]: any }) => {
     }, Object.values(dependencies))
 }
 
-export const scrollTo = (event: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+export const scrollTo = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    target: string,
+    offset: number = 0
+) => {
     event.preventDefault()
 
     const targetElement = document.querySelector(target)
 
-    if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' })
+    if (!targetElement) return
+
+    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset
+
+    const startPosition = window.pageYOffset
+
+    const distance = targetPosition - startPosition
+
+    let start: number | null = null
+
+    const step = (timestamp: number) => {
+        if (!start) start = timestamp
+        const progress = timestamp - start
+        const duration = 500
+        let stepScroll = Math.min(progress / duration, 1) * (distance + offset)
+
+        window.scrollTo(0, startPosition + stepScroll)
+
+        if (progress < duration) {
+            window.requestAnimationFrame(step)
+        } else {
+            window.scrollTo(0, startPosition + distance + offset)
+        }
     }
+
+    window.requestAnimationFrame(step)
 }
