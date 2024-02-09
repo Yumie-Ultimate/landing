@@ -1,6 +1,4 @@
 .embla {
-  @include flexibility(center, center, column);
-
   gap: 2.5rem;
   width: 100dvw;
   overflow: hidden;
@@ -22,9 +20,13 @@
 }
 
 .flash {
-  display: flex;
-  padding: 2.5rem;
-  flex: 0 0 100%;
+  @include flexibility(center, center, column);
+
+  & .slide {
+    display: flex;
+    padding: 2.5rem;
+    flex: 0 0 100%;
+  }
 }
 
 .dot {

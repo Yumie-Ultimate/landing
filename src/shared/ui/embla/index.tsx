@@ -54,11 +54,11 @@ const Embla = ({ children, variant = 'standard' }: Props) => {
     ))
 
     return (
-        <div className={styles.embla}>
+        <div className={cn(styles.embla, styles[variant])}>
             <div className={styles.viewport} ref={emblaRef}>
                 <div className={styles.container}>
                     {Children.map(children, (child, index) => (
-                        <div key={index} className={cn(styles.slide, styles[variant])}>
+                        <div key={index} className={styles.slide}>
                             {child}
                         </div>
                     ))}
