@@ -1,10 +1,12 @@
 'use client'
 
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 
 import cn from 'classnames'
 
 import { addDoc, collection } from '@firebase/firestore'
+
+import * as Yup from 'yup'
 
 import styles from './styles.module.scss'
 
@@ -21,30 +23,48 @@ const Preorder = () => {
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
 
-    const [isEmailValid, setIsEmailValid] = useState(true)
-
-    const validateEmail = (email: string) => {
-        const re =
-            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i
-        return re.test(String(email).toLowerCase())
+    enum ValidationStatus {
+        Default = 0,
+        Valid = 1,
+        Invalid = 2
     }
 
+    const [emailStatus, setEmailStatus] = useState(ValidationStatus.Default)
+    const [nameStatus, setNameStatus] = useState(ValidationStatus.Default)
+
+    const [isDisabled, setIsDisabled] = useState(false)
+
+    const validateEmail = (email: string) => {
+        const re = /^(?![.])[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?<![.])$/i
+        return re.test(email)
+    }
+
+    const validateName = (name: string) => name.length > 0
+
     const handleSubmit = async () => {
-        const isValid = validateEmail(email)
+        const isEmailValid = validateEmail(email)
+        const isNameValid = validateName(name)
 
-        setIsEmailValid(isValid)
+        setEmailStatus(isEmailValid ? ValidationStatus.Valid : ValidationStatus.Invalid)
+        setNameStatus(isNameValid ? ValidationStatus.Valid : ValidationStatus.Invalid)
 
-        console.log(isValid)
+        const isValid = isEmailValid && isNameValid
 
         if (isValid) {
             try {
+                setIsDisabled(true)
+
                 const document = await addDoc(collection(db, 'preorders'), {
                     name,
                     email,
                     message
                 })
 
-                console.log(document)
+                setName('')
+                setEmail('')
+                setMessage('')
+
+                setIsDisabled(false)
 
                 index(NotificationStatus.Success, 'Заявка успешно создана')
             } catch (error) {
@@ -59,7 +79,18 @@ const Preorder = () => {
     ) => {
         callback(event.target.value)
 
-        setIsEmailValid(true)
+        console.log(true)
+
+        setNameStatus(ValidationStatus.Default)
+        setEmailStatus(ValidationStatus.Default)
+    }
+
+    const handleKeyDown = (event: React.KeyboardEvent) => {
+        if (event.key === 'Enter') {
+            event.preventDefault()
+
+            handleSubmit()
+        }
     }
 
     return (
@@ -75,13 +106,16 @@ const Preorder = () => {
                                 * Имя
                             </label>
                             <input
-                                className={styles.input}
+                                className={cn(styles.input, {
+                                    [styles.invalid]: nameStatus === ValidationStatus.Invalid
+                                })}
                                 placeholder='Марк'
                                 maxLength={20}
                                 value={name}
                                 name='name'
                                 type='text'
-                                onChange={(event) => setName(event.target.value)}
+                                onKeyDown={(event) => handleKeyDown(event)}
+                                onChange={(event) => handleChange(event, setName)}
                             />
                         </div>
                         <div className={styles.item}>
@@ -89,12 +123,15 @@ const Preorder = () => {
                                 * Email
                             </label>
                             <input
-                                className={cn(styles.input, { [styles.invalid]: !isEmailValid })}
+                                className={cn(styles.input, {
+                                    [styles.invalid]: emailStatus === ValidationStatus.Invalid
+                                })}
                                 placeholder='you@mail.com'
                                 maxLength={50}
                                 value={email}
                                 name='email'
-                                type='text'
+                                type='email'
+                                onKeyDown={(event) => handleKeyDown(event)}
                                 onChange={(event) => handleChange(event, setEmail)}
                             />
                         </div>
@@ -108,12 +145,15 @@ const Preorder = () => {
                                 maxLength={200}
                                 value={message}
                                 name='message'
+                                onKeyDown={(event) => handleKeyDown(event)}
                                 onChange={(event) => setMessage(event.target.value)}
                             />
                             <span className={styles.counter}></span>
                         </div>
                     </form>
-                    <MainButton onClick={() => handleSubmit()}>Отправить</MainButton>
+                    <MainButton onClick={() => handleSubmit()} disabled={isDisabled}>
+                        Отправить
+                    </MainButton>
                 </div>
             </Container>
         </section>
