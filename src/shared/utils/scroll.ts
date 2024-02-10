@@ -60,8 +60,6 @@ export const scrollTo = (
 
     let offset = 0
 
-    console.log(screenSize)
-
     switch (target) {
         case '#we':
             offset = [XS, SM].includes(screenSize) ? -100 : -200

@@ -9,9 +9,13 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode
 }
 
-const MainButton = ({ variant = 'standard', children, onClick }: Props) => {
+const MainButton = ({ variant = 'standard', children, disabled, onClick }: Props) => {
     return (
-        <button className={cn(styles.button, styles[variant])} onClick={onClick}>
+        <button
+            className={cn(styles.button, styles[variant])}
+            disabled={disabled}
+            onClick={onClick}
+        >
             {children}
         </button>
     )

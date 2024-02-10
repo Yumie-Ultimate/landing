@@ -22,4 +22,15 @@
       background: var(--accent-color-10);
     }
   }
+
+  &:disabled {
+    background: var(--transparent-color-5);
+
+    &:hover {
+      background: var(--transparent-color-5);
+      color: var(--additional-color-5);
+      cursor: not-allowed;
+      outline: none;
+    }
+  }
 }

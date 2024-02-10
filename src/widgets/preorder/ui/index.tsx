@@ -1,6 +1,6 @@
 'use client'
 
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 
 import cn from 'classnames'
 
@@ -21,7 +21,16 @@ const Preorder = () => {
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
 
-    const [isEmailValid, setIsEmailValid] = useState(true)
+    enum ValidationStatus {
+        Default = 0,
+        Valid = 1,
+        Invalid = 2
+    }
+
+    const [emailStatus, setEmailStatus] = useState(ValidationStatus.Default)
+    const [nameStatus, setNameStatus] = useState(ValidationStatus.Default)
+
+    const [isDisabled, setIsDisabled] = useState(false)
 
     const validateEmail = (email: string) => {
         const re =
@@ -29,22 +38,31 @@ const Preorder = () => {
         return re.test(String(email).toLowerCase())
     }
 
+    const validateName = (name: string) => name.length > 0
+
     const handleSubmit = async () => {
-        const isValid = validateEmail(email)
+        const isEmailValid = validateEmail(email)
+        const isNameValid = validateName(name)
 
-        setIsEmailValid(isValid)
+        setEmailStatus(isEmailValid ? ValidationStatus.Valid : ValidationStatus.Invalid)
+        setNameStatus(isNameValid ? ValidationStatus.Valid : ValidationStatus.Invalid)
 
-        console.log(isValid)
+        const isValid = isEmailValid && isNameValid
 
         if (isValid) {
             try {
+                setIsDisabled(true)
+
                 const document = await addDoc(collection(db, 'preorders'), {
                     name,
                     email,
                     message
                 })
 
-                console.log(document)
+                setName('')
+                setEmail('')
+
+                setIsDisabled(false)
 
                 index(NotificationStatus.Success, 'Заявка успешно создана')
             } catch (error) {
@@ -59,7 +77,7 @@ const Preorder = () => {
     ) => {
         callback(event.target.value)
 
-        setIsEmailValid(true)
+        setEmailStatus(ValidationStatus.Default)
     }
 
     return (
@@ -75,7 +93,9 @@ const Preorder = () => {
                                 * Имя
                             </label>
                             <input
-                                className={styles.input}
+                                className={cn(styles.input, {
+                                    [styles.invalid]: nameStatus === ValidationStatus.Invalid
+                                })}
                                 placeholder='Марк'
                                 maxLength={20}
                                 value={name}
@@ -89,7 +109,9 @@ const Preorder = () => {
                                 * Email
                             </label>
                             <input
-                                className={cn(styles.input, { [styles.invalid]: !isEmailValid })}
+                                className={cn(styles.input, {
+                                    [styles.invalid]: emailStatus === ValidationStatus.Invalid
+                                })}
                                 placeholder='you@mail.com'
                                 maxLength={50}
                                 value={email}
@@ -113,7 +135,9 @@ const Preorder = () => {
                             <span className={styles.counter}></span>
                         </div>
                     </form>
-                    <MainButton onClick={() => handleSubmit()}>Отправить</MainButton>
+                    <MainButton onClick={() => handleSubmit()} disabled={isDisabled}>
+                        Отправить
+                    </MainButton>
                 </div>
             </Container>
         </section>

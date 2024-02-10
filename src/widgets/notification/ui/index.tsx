@@ -23,7 +23,7 @@ const Notification = () => {
         if (!isNotificationHidden) {
             setTimeout(() => {
                 setIsNotificationHidden(true)
-            }, 5000)
+            }, 2500)
         }
     }, [isNotificationHidden])
 
