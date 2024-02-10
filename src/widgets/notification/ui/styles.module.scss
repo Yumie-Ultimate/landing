@@ -1,0 +1,12 @@
+.notification {
+  @include flexibility(space-between, center);
+
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  background: var(--primary-color-5);
+  color: var(--positive-color-5);
+  gap: .625rem;
+  padding: .625rem 1.25rem;
+  border-radius: 6.25rem;
+}
