@@ -1,7 +1,6 @@
 .embla {
   gap: 2.5rem;
   width: 100dvw;
-  overflow: hidden;
 }
 
 .viewport {
@@ -23,13 +22,14 @@
 
   & .slide {
     display: flex;
-    padding: 2.5rem;
+    padding: 5rem;
     flex: 0 0 100%;
   }
 }
 
 .dots {
   display: flex;
+  transform: translateY(-100%);
 }
 
 .dot-wrapper {

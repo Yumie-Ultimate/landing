@@ -24,12 +24,12 @@ const Interface = () => {
                     <Image
                         key={screen}
                         className={styles.image}
-                        src={`/images/vector/common/${screen}.svg`}
+                        src={`/images/raster/common/${screen}.png?as=webp&quality=70`}
                         alt={`Screen ${index + 1}`}
                         width={400}
                         height={880}
                         draggable={false}
-                        loading='eager'
+                        loading='lazy'
                     />
                 ))}
             </Embla>

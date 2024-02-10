@@ -45,14 +45,14 @@ const Intro = () => {
                         <Link
                             href='#preorder'
                             passHref
-                            onClick={(event) => scrollTo(event, '#preorder')}
+                            onClick={(event) => scrollTo(event, '#preorder', screenSize)}
                         >
                             <MainButton variant='accent'>Попробовать</MainButton>
                         </Link>
                         <Link
                             href='#interface'
                             passHref
-                            onClick={(event) => scrollTo(event, '#interface')}
+                            onClick={(event) => scrollTo(event, '#interface', screenSize)}
                         >
                             <MainButton>Посмотреть</MainButton>
                         </Link>

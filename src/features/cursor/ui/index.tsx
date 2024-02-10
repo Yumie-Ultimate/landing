@@ -70,8 +70,7 @@ const Cursor = () => {
                 a,
                 button,
                 textarea,
-                input[type='submit'],
-                input[type='button'],
+                input,
                 label[for],
                 select,
                 [data-cursor-interact]
@@ -80,12 +79,23 @@ const Cursor = () => {
             setCursorVariant(shouldPoint ? 'pointing' : 'default')
         }
 
+        const changeVisibility = () => {
+            setIsHidden(isTouchDevice())
+        }
+
+        changeVisibility()
+
+        window.addEventListener('resize', changeVisibility)
+
         document.addEventListener('mousemove', handleMouseMove)
         document.addEventListener('mouseover', updateCursorStyle)
 
         return () => {
+            window.removeEventListener('resize', changeVisibility)
+
             document.removeEventListener('mousemove', handleMouseMove)
             document.removeEventListener('mouseover', updateCursorStyle)
+
             if (frameId.current) cancelAnimationFrame(frameId.current)
         }
     }, [])
@@ -99,10 +109,6 @@ const Cursor = () => {
 
         return touchSupported && isMobileWidth
     }
-
-    useEffect(() => {
-        setIsHidden(isTouchDevice())
-    }, [screenSize])
 
     useEffect(() => {
         if (!isTouchDevice()) {

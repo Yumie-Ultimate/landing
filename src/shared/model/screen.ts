@@ -12,7 +12,7 @@ export enum ScreenSize {
     XL = 1200
 }
 
-interface IState {
+export interface IState {
     screenSize: ScreenSize
     setScreenSize: (screenSize: ScreenSize) => void
 }

@@ -1,7 +1,6 @@
 .interface {
   @include flexibility(center, center, column);
 
-  gap: 5rem;
   padding-block: 5rem;
   position: relative;
 
@@ -17,6 +16,7 @@
   height: auto;
   border-radius: 3.0rem;
   background: #FFFFFF;
+  image-rendering: high-quality;
 
   @media (min-width: 420px) {
     width: 20rem;
@@ -27,7 +27,7 @@
   }
 
   [data-theme='dark'] & {
-    box-shadow: 0 0 30px 5px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 5rem -1.25rem rgba(255, 255, 255, 0.75);
   }
 }
 

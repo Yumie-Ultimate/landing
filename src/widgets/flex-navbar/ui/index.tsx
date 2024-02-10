@@ -8,11 +8,12 @@ import { motion, useAnimation } from 'framer-motion'
 
 import styles from './styles.module.scss'
 
+import { scrollTo } from '@/shared/utils/scroll'
+
 import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
 import { ScreenSize, useScreenSizeStore } from '@/shared/model/screen'
 
 import NavbarClosingButton from '@/features/navbar-closing-button/ui'
-import { scrollTo } from '@/shared/utils/scroll'
 
 const FlexNavbar = () => {
     const { XS } = ScreenSize
@@ -72,7 +73,7 @@ const FlexNavbar = () => {
                         className={styles.link}
                         href='#we'
                         passHref
-                        onClick={(event) => handleClick(event, '#we', -100)}
+                        onClick={(event) => handleClick(event, '#we', screenSize)}
                     >
                         Мы
                     </Link>
@@ -82,7 +83,7 @@ const FlexNavbar = () => {
                         className={styles.link}
                         href='#solutions'
                         passHref
-                        onClick={(event) => handleClick(event, '#solutions')}
+                        onClick={(event) => handleClick(event, '#solutions', screenSize)}
                     >
                         Решения
                     </Link>
@@ -92,7 +93,7 @@ const FlexNavbar = () => {
                         className={styles.link}
                         href='#interface'
                         passHref
-                        onClick={(event) => handleClick(event, '#interface')}
+                        onClick={(event) => handleClick(event, '#interface', screenSize)}
                     >
                         Интерфейс
                     </Link>
@@ -102,7 +103,7 @@ const FlexNavbar = () => {
                         className={styles.link}
                         href='#faq'
                         passHref
-                        onClick={(event) => handleClick(event, '#faq')}
+                        onClick={(event) => handleClick(event, '#faq', screenSize)}
                     >
                         FAQ
                     </Link>

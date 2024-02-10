@@ -26,6 +26,7 @@ const Preorder = () => {
                             </label>
                             <input
                                 className={styles.input}
+                                placeholder='Марк'
                                 maxLength={20}
                                 value={name}
                                 name='name'
@@ -39,6 +40,7 @@ const Preorder = () => {
                             </label>
                             <input
                                 className={styles.input}
+                                placeholder='you@mail.com'
                                 maxLength={20}
                                 value={email}
                                 name='email'
@@ -52,6 +54,7 @@ const Preorder = () => {
                             </label>
                             <textarea
                                 className={styles.textarea}
+                                placeholder='А как найти самого лучшего друга'
                                 maxLength={200}
                                 value={message}
                                 name='message'
