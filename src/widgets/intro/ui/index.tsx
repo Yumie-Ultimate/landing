@@ -5,8 +5,6 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import cn from 'classnames'
-
 import styles from './styles.module.scss'
 
 import { scrollTo } from '@/shared/utils/scroll'

@@ -37,7 +37,7 @@
   width: min(100%, 40rem);
 }
 
-.form {
+.items {
   @include column(5rem);
 
   width: 100%;
@@ -62,6 +62,10 @@
   &::placeholder {
     @include text-80;
   }
+}
+
+.invalid {
+  border-color: var(--negative-color-5);
 }
 
 .textarea {

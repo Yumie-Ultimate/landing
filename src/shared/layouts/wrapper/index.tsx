@@ -14,6 +14,8 @@ import { getInitialTheme, useThemeStore } from '@/features/theme-toggle/model'
 
 import { useLoadingStore } from '@/widgets/loading/model'
 
+import Cursor from '@/features/cursor/ui'
+
 const Header = lazy(() => import('@/shared/ui/header'))
 const Main = lazy(() => import('@/shared/ui/main'))
 const Footer = lazy(() => import('@/shared/ui/footer'))
@@ -21,7 +23,8 @@ const Footer = lazy(() => import('@/shared/ui/footer'))
 const FlexNavbar = lazy(() => import('@/widgets/flex-navbar/ui'))
 
 import Loading from '@/widgets/loading/ui'
-import Cursor from '@/features/cursor/ui'
+
+import Notification from '@/widgets/notification/ui'
 
 interface Props {
     children: ReactNode
@@ -59,6 +62,7 @@ const Wrapper = ({ children }: Props) => {
                         <Footer />
                         <FlexNavbar />
                         <Cursor />
+                        <Notification />
                     </div>
                 </Suspense>
             )}
