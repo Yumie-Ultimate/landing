@@ -70,8 +70,7 @@ const Cursor = () => {
                 a,
                 button,
                 textarea,
-                input[type='submit'],
-                input[type='button'],
+                input,
                 label[for],
                 select,
                 [data-cursor-interact]
@@ -80,39 +79,48 @@ const Cursor = () => {
             setCursorVariant(shouldPoint ? 'pointing' : 'default')
         }
 
+        const changeVisibility = () => {
+            setIsHidden(isTouchDevice())
+        }
+
+        changeVisibility()
+
+        window.addEventListener('resize', changeVisibility)
+
         document.addEventListener('mousemove', handleMouseMove)
         document.addEventListener('mouseover', updateCursorStyle)
 
         return () => {
+            window.removeEventListener('resize', changeVisibility)
+
             document.removeEventListener('mousemove', handleMouseMove)
             document.removeEventListener('mouseover', updateCursorStyle)
+
             if (frameId.current) cancelAnimationFrame(frameId.current)
         }
     }, [])
 
+    const isTouchDevice = () => {
+        const touchSupported = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+
+        const screenWidth = window.innerWidth || document.documentElement.clientWidth
+
+        const isMobileWidth = screenWidth < 1024
+
+        return touchSupported && isMobileWidth
+    }
+
     useEffect(() => {
-        const isTouchDevice = () => {
-            const touchSupported = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+        if (!isTouchDevice()) {
+            const { clientWidth, clientHeight } = document.documentElement
 
-            const screenWidth = window.innerWidth || document.documentElement.clientWidth
-
-            const isMobileWidth = screenWidth < 1024
-
-            return touchSupported && isMobileWidth
+            setIsHidden(
+                position.x <= 0 ||
+                    position.y <= 0 ||
+                    position.x >= clientWidth - 10 ||
+                    position.y >= clientHeight - 10
+            )
         }
-
-        setIsHidden(isTouchDevice())
-    }, [screenSize])
-
-    useEffect(() => {
-        const { clientWidth, clientHeight } = document.documentElement
-
-        setIsHidden(
-            position.x <= 0 ||
-                position.y <= 0 ||
-                position.x >= clientWidth - 10 ||
-                position.y >= clientHeight - 10
-        )
     }, [position])
 
     if (isHidden) return false

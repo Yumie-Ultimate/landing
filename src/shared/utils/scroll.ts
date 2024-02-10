@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
+import { ScreenSize, useScreenSizeStore } from '@/shared/model/screen'
 
 export const preventScroll = (e: Event) => {
     e.preventDefault()
@@ -51,9 +52,29 @@ export const useScrollPrevention = (dependencies: { [key: string]: any }) => {
 export const scrollTo = (
     event: React.MouseEvent<HTMLAnchorElement>,
     target: string,
-    offset: number = 0
+    screenSize: ScreenSize
 ) => {
     event.preventDefault()
+
+    const { XS, SM } = ScreenSize
+
+    let offset = 0
+
+    console.log(screenSize)
+
+    switch (target) {
+        case '#we':
+            offset = [XS, SM].includes(screenSize) ? -100 : -200
+            break
+        case '#interface':
+            offset = [XS, SM].includes(screenSize) ? 300 : 500
+            break
+        case '#preorder':
+            offset = [XS, SM].includes(screenSize) ? -100 : -150
+            break
+        default:
+            break
+    }
 
     const targetElement = document.querySelector(target)
 

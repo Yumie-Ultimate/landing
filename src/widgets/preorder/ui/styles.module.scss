@@ -58,6 +58,10 @@
   &:focus {
     border-color: var(--accent-color-5);
   }
+
+  &::placeholder {
+    @include text-80;
+  }
 }
 
 .textarea {

@@ -172,6 +172,14 @@
   }
 }
 
+@mixin text-80 {
+  font-size: 1.0rem;
+
+  @media (min-width: 992px) {
+    font-size: 1.25rem;
+  }
+}
+
 // Tag text
 
 @mixin text-35 {
