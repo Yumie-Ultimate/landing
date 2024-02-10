@@ -12,7 +12,7 @@ export const metadata: Metadata = {
             Преодолейте социальную изоляцию и расширьте свой круг общения с Yumie.
         `
     },
-    icons: ['/icons/icon.ico']
+    icons: ['/favicon.ico']
 }
 
 export default function RootLayout({
