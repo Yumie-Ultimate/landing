@@ -6,6 +6,8 @@ import cn from 'classnames'
 
 import { addDoc, collection } from '@firebase/firestore'
 
+import * as Yup from 'yup'
+
 import styles from './styles.module.scss'
 
 import { index, NotificationStatus } from '@/widgets/notification/model'
@@ -33,9 +35,8 @@ const Preorder = () => {
     const [isDisabled, setIsDisabled] = useState(false)
 
     const validateEmail = (email: string) => {
-        const re =
-            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i
-        return re.test(String(email).toLowerCase())
+        const re = /^(?![.])[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?<![.])$/i
+        return re.test(email)
     }
 
     const validateName = (name: string) => name.length > 0
@@ -61,6 +62,7 @@ const Preorder = () => {
 
                 setName('')
                 setEmail('')
+                setMessage('')
 
                 setIsDisabled(false)
 
@@ -77,7 +79,18 @@ const Preorder = () => {
     ) => {
         callback(event.target.value)
 
+        console.log(true)
+
+        setNameStatus(ValidationStatus.Default)
         setEmailStatus(ValidationStatus.Default)
+    }
+
+    const handleKeyDown = (event: React.KeyboardEvent) => {
+        if (event.key === 'Enter') {
+            event.preventDefault()
+
+            handleSubmit()
+        }
     }
 
     return (
@@ -101,7 +114,8 @@ const Preorder = () => {
                                 value={name}
                                 name='name'
                                 type='text'
-                                onChange={(event) => setName(event.target.value)}
+                                onKeyDown={(event) => handleKeyDown(event)}
+                                onChange={(event) => handleChange(event, setName)}
                             />
                         </div>
                         <div className={styles.item}>
@@ -116,7 +130,8 @@ const Preorder = () => {
                                 maxLength={50}
                                 value={email}
                                 name='email'
-                                type='text'
+                                type='email'
+                                onKeyDown={(event) => handleKeyDown(event)}
                                 onChange={(event) => handleChange(event, setEmail)}
                             />
                         </div>
@@ -130,6 +145,7 @@ const Preorder = () => {
                                 maxLength={200}
                                 value={message}
                                 name='message'
+                                onKeyDown={(event) => handleKeyDown(event)}
                                 onChange={(event) => setMessage(event.target.value)}
                             />
                             <span className={styles.counter}></span>

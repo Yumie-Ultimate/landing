@@ -64,7 +64,8 @@
   }
 }
 
-.invalid {
+.invalid,
+.invalid:focus, {
   border-color: var(--negative-color-5);
 }
 
