@@ -10,7 +10,7 @@ import { getCurrentScreenSize, useScreenSize, useScreenSizeStore } from '@/share
 
 import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
 
-import { getInitialTheme, useThemeStore } from '@/features/theme-toggle/model'
+import { getInitialTheme, Theme, useThemeStore } from '@/features/theme-toggle/model'
 
 import { useLoadingStore } from '@/widgets/loading/model'
 
@@ -25,6 +25,7 @@ const FlexNavbar = lazy(() => import('@/widgets/flex-navbar/ui'))
 import Loading from '@/widgets/loading/ui'
 
 import Notification from '@/widgets/notification/ui'
+import DynamicGradient from '@/widgets/dynamic-gradient/ui'
 
 interface Props {
     children: ReactNode
@@ -63,6 +64,7 @@ const Wrapper = ({ children }: Props) => {
                         <FlexNavbar />
                         <Cursor />
                         <Notification />
+                        {theme === Theme.Light && <DynamicGradient />}
                     </div>
                 </Suspense>
             )}
