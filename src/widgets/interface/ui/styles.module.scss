@@ -16,7 +16,7 @@
   height: auto;
   border-radius: 3.0rem;
   background: #FFFFFF;
-  image-rendering: high-quality;
+  will-change: transform;
 
   @media (min-width: 420px) {
     width: 20rem;

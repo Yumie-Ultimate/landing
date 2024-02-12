@@ -136,7 +136,7 @@ const Cursor = () => {
             }}
             animate='default'
             variants={variants}
-            transition={{ type: 'spring', stiffness: 5000, damping: 50 }}
+            transition={{ type: 'spring', stiffness: 5000, damping: 30 }}
         />
     )
 }
