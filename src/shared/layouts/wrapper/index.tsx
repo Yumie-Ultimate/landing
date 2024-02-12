@@ -1,12 +1,17 @@
 'use client'
 
-import React, { lazy, ReactNode, Suspense, useEffect, useState } from 'react'
+import React, { lazy, ReactNode, Suspense, useEffect } from 'react'
 
 import styles from './styles.module.scss'
 
 import { useScrollPrevention } from '@/shared/utils/scroll'
 
-import { getCurrentScreenSize, useScreenSize, useScreenSizeStore } from '@/shared/model/screen'
+import {
+    getCurrentScreenSize,
+    ScreenSize,
+    useScreenSize,
+    useScreenSizeStore
+} from '@/shared/model/screen'
 
 import { useFlexNavbarStore } from '@/widgets/flex-navbar/model'
 
@@ -15,17 +20,16 @@ import { getInitialTheme, Theme, useThemeStore } from '@/features/theme-toggle/m
 import { useLoadingStore } from '@/widgets/loading/model'
 
 import Cursor from '@/features/cursor/ui'
+import Loading from '@/widgets/loading/ui'
+
+import Notification from '@/widgets/notification/ui'
+import DynamicGradient from '@/widgets/dynamic-gradient/ui'
 
 const Header = lazy(() => import('@/shared/ui/header'))
 const Main = lazy(() => import('@/shared/ui/main'))
 const Footer = lazy(() => import('@/shared/ui/footer'))
 
 const FlexNavbar = lazy(() => import('@/widgets/flex-navbar/ui'))
-
-import Loading from '@/widgets/loading/ui'
-
-import Notification from '@/widgets/notification/ui'
-import DynamicGradient from '@/widgets/dynamic-gradient/ui'
 
 interface Props {
     children: ReactNode
@@ -64,7 +68,9 @@ const Wrapper = ({ children }: Props) => {
                         <FlexNavbar />
                         <Cursor />
                         <Notification />
-                        {theme === Theme.Light && <DynamicGradient />}
+                        {theme === Theme.Light && screenSize === ScreenSize.XL && (
+                            <DynamicGradient />
+                        )}
                     </div>
                 </Suspense>
             )}
