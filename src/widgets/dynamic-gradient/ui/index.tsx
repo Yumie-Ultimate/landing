@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 const DynamicGradient: React.FC = () => {
     const [gradient, setGradient] = useState<string>(
@@ -34,7 +35,7 @@ const DynamicGradient: React.FC = () => {
         }
     }, [])
 
-    return (
+    return createPortal(
         <div
             style={{
                 position: 'fixed',
@@ -42,10 +43,11 @@ const DynamicGradient: React.FC = () => {
                 left: 0,
                 width: '100%',
                 zIndex: -10,
-                height: '100vh',
+                height: '100dvh',
                 background: gradient
             }}
-        />
+        />,
+        document.body
     )
 }
 

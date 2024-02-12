@@ -2,6 +2,8 @@
 
 import React, { lazy, ReactNode, Suspense, useEffect } from 'react'
 
+import dynamic from 'next/dynamic'
+
 import styles from './styles.module.scss'
 
 import { useScrollPrevention } from '@/shared/utils/scroll'
@@ -23,13 +25,14 @@ import Cursor from '@/features/cursor/ui'
 import Loading from '@/widgets/loading/ui'
 
 import Notification from '@/widgets/notification/ui'
-import DynamicGradient from '@/widgets/dynamic-gradient/ui'
 
 const Header = lazy(() => import('@/shared/ui/header'))
 const Main = lazy(() => import('@/shared/ui/main'))
 const Footer = lazy(() => import('@/shared/ui/footer'))
 
 const FlexNavbar = lazy(() => import('@/widgets/flex-navbar/ui'))
+
+const DynamicGradient = dynamic(() => import('@/widgets/dynamic-gradient/ui'))
 
 interface Props {
     children: ReactNode
@@ -68,9 +71,7 @@ const Wrapper = ({ children }: Props) => {
                         <FlexNavbar />
                         <Cursor />
                         <Notification />
-                        {theme === Theme.Light && screenSize === ScreenSize.XL && (
-                            <DynamicGradient />
-                        )}
+                        {theme === Theme.Light && <DynamicGradient />}
                     </div>
                 </Suspense>
             )}
